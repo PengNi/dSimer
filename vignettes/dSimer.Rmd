@@ -1,25 +1,21 @@
 ---
 title: "Integration of disease similarity methods and disease network visualization"
-author: "\\
-
-      PengNi (<nipeng@csu.edu.cn>)\\
-      
-      School of Information Science and Engineering, Central South University, Changsha, 410083, China."
-date: "`r Sys.Date()`"
+author: |-
+  \
+  PengNi (<nipeng@csu.edu.cn>)\
+  School of Information Science and Engineering, Central South University, Changsha, 410083, China.
+date: '`r Sys.Date()`'
+output:
+  BiocStyle::html_document:
+    toc: yes
+  pdf_document:
+    toc: yes
 csl: nature.csl
-output: 
-  BiocStyle:::html_document:
-    toc: true
-  BiocStyle:::pdf_document:
-    toc: true
-vignette: >
-  %\VignetteIndexEntry{Integration of disease similarity methods and disease network visualization}
-  %\VignettePackage{dSimer}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+vignette: |
+  %\VignetteIndexEntry{Integration of disease similarity methods and disease network visualization} %\VignettePackage{dSimer} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
 ```{r style, echo=FALSE, results="asis", message=FALSE}
-BiocStyle:::markdown()
+BiocStyle::markdown()
 knitr::opts_chunk$set(tidy = FALSE,
                       warning = FALSE,
                       message = FALSE)

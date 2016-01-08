@@ -83,9 +83,4 @@ funsim<-function(g1,G2,LLSnList){
 }
 
 
-funsim_cpp_e<-function(d1, d2, D2GList, LLSn){
-  return(funsim_cpp(d1, d2, D2GList, LLSn))
-}
-
-
 
