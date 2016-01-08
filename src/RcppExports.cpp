@@ -34,20 +34,6 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
-// funsim_cpp
-Rcpp::NumericMatrix funsim_cpp(Rcpp::CharacterVector d1, Rcpp::CharacterVector d2, Rcpp::List D2GList, Rcpp::List LLSn);
-RcppExport SEXP dSimer_funsim_cpp(SEXP d1SEXP, SEXP d2SEXP, SEXP D2GListSEXP, SEXP LLSnSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type d1(d1SEXP);
-    Rcpp::traits::input_parameter< Rcpp::CharacterVector >::type d2(d2SEXP);
-    Rcpp::traits::input_parameter< Rcpp::List >::type D2GList(D2GListSEXP);
-    Rcpp::traits::input_parameter< Rcpp::List >::type LLSn(LLSnSEXP);
-    __result = Rcpp::wrap(funsim_cpp(d1, d2, D2GList, LLSn));
-    return __result;
-END_RCPP
-}
 // TDistanceMat_cpp
 Rcpp::NumericMatrix TDistanceMat_cpp(Rcpp::NumericMatrix& SDistanceMat, float& A, float& b);
 RcppExport SEXP dSimer_TDistanceMat_cpp(SEXP SDistanceMatSEXP, SEXP ASEXP, SEXP bSEXP) {

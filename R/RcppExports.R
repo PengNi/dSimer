@@ -9,10 +9,6 @@ BOG_normat_cpp <- function(D1, D2, simmat, matnameloc, maxsim, IC) {
     .Call('dSimer_BOG_normat_cpp', PACKAGE = 'dSimer', D1, D2, simmat, matnameloc, maxsim, IC)
 }
 
-funsim_cpp <- function(d1, d2, D2GList, LLSn) {
-    .Call('dSimer_funsim_cpp', PACKAGE = 'dSimer', d1, d2, D2GList, LLSn)
-}
-
 TDistanceMat_cpp <- function(SDistanceMat, A, b) {
     .Call('dSimer_TDistanceMat_cpp', PACKAGE = 'dSimer', SDistanceMat, A, b)
 }
