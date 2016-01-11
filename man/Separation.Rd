@@ -35,7 +35,7 @@ sim<-Separation2Similarity(sep)
 sim
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease 

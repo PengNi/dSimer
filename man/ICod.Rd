@@ -38,7 +38,7 @@ ds<-sample(names(d2g_fundo_symbol),5)
 ICod(ds,ds,d2g_fundo_symbol,graph_hprd)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Paik H, Heo HS, Ban H, et al. Unraveling human protein interaction 

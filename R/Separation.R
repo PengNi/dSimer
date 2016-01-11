@@ -15,7 +15,7 @@
 #' @importFrom igraph groups
 #' @importFrom igraph shortest.paths
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease 
 #' relationships through the incomplete interactome[J]. Science, 2015, 
 #' 347(6224): 1257601.

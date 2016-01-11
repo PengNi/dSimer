@@ -42,7 +42,7 @@ sim<-PSB(ds,ds,d2go_sample,go2g_sample)
 Normalize(sim)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semantic similarity[J]. 

@@ -36,7 +36,7 @@ llsnlist<-LLSn2List(HumanNet_sample)
 FunSim(ds,ds,d2g_fundo_entrezid,llsnlist)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 

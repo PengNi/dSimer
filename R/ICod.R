@@ -18,7 +18,7 @@
 #' @importFrom igraph neighborhood
 #' @importFrom igraph shortest.paths
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Paik H, Heo HS, Ban H, et al. Unraveling human protein interaction 
 #' networks underlying co-occurrences of diseases and pathological conditions[J]. 
 #' Journal of translational medicine, 2014, 12(1): 99.

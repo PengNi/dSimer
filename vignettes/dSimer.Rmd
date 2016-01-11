@@ -2,7 +2,7 @@
 title: "Integration of disease similarity methods and disease network visualization"
 author: "\\
 
-  PengNi (<nipeng@csu.edu.cn>)\\
+  Peng Ni (<nipeng@csu.edu.cn>)\\
   
   School of Information Science and Engineering, Central South University, Changsha, 410083, China."
 date: "`r Sys.Date()`"

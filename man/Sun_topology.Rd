@@ -34,7 +34,7 @@ ds<-sample(names(d2g_fundo_symbol),5)
 Sun_topology(ds,ds,d2g_fundo_symbol,graphlet_sig_hprd,weight)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Sun K, Goncalves JP, Larminie C. Predicting disease associations 

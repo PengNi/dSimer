@@ -11,7 +11,7 @@
 #' @return a matrix of disease disease simialrity
 #' which rownames is D1 and colnames is D2
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 
 #' disease similarity by integrating semantic and gene functional association[J]. 
 #' PloS one, 2014, 9(6): e99415.

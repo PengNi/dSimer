@@ -28,7 +28,7 @@ sim<-BOG(ds,ds,d2g_separation)
 Normalize(sim) #normalize BOG sim scores
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Mathur S, Dinakarpandian D. Automated ontological gene annotation for computing disease similarity[J]. 

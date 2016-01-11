@@ -21,7 +21,7 @@ sim_mat<-function(d2g){
 #' @importFrom Rcpp sourceCpp
 #' @useDynLib dSimer
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Mathur S, Dinakarpandian D. Automated ontological gene annotation for computing disease similarity[J]. 
 #'  AMIA Summits on Translational Science Proceedings, 2010, 2010: 12
 #' @seealso \code{\link{Normalize}}

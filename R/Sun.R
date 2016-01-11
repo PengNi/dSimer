@@ -8,7 +8,7 @@
 #' @return a matrix of disease disease simialrity
 #' which rownames is D1 and colnames is D2
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Sun K, Goncalves JP, Larminie C. Predicting disease associations 
 #' via biological network analysis[J]. BMC bioinformatics, 2014, 15(1): 304.
 #' @examples
@@ -58,7 +58,7 @@ Sun_annotation<-function(D1,D2,d2g){
 #' @return a matrix of disease disease simialrity
 #' which rownames is D1 and colnames is D2
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Sun K, Goncalves JP, Larminie C. Predicting disease associations 
 #' via biological network analysis[J]. BMC bioinformatics, 2014, 15(1): 304.
 #' @seealso \code{\link{get_GOterm2GeneAssos}}, \code{\link{HypergeometricTest}}
@@ -125,7 +125,7 @@ Sun_function<-function(D1,D2,d2go){
 #' @useDynLib dSimer
 #' @importFrom Rcpp sourceCpp
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Sun K, Goncalves JP, Larminie C. Predicting disease associations 
 #' via biological network analysis[J]. BMC bioinformatics, 2014, 15(1): 304.
 #' @examples

@@ -12,7 +12,7 @@
 #' @return a matrix of disease disease simialrity 
 #' which rownames is D1 and colnames is D2
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semantic similarity[J]. 
 #' Journal of biomedical informatics, 2012, 45(2): 363-371.
 #' @seealso \code{\link{get_GOterm2GeneAssos}}, \code{\link{HypergeometricTest}}, \code{\link{Normalize}}
