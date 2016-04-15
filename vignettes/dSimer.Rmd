@@ -2,6 +2,7 @@
 title: "Integration of disease similarity methods and disease network visualization"
 author: "\\
 
+  Min Li (limin@mail.csu.edu.cn)\\
   Peng Ni (<nipeng@csu.edu.cn>)\\
   
   School of Information Science and Engineering, Central South University, Changsha, 410083, China."
@@ -14,7 +15,7 @@ output:
 csl: nature.csl
 vignette: >
   %\VignetteIndexEntry{Integration of disease similarity methods and disease network visualization} 
-  %\VignettePackage{dSimer} 
+  %\VignettePackage{dSimer}
   %\VignetteEngine{knitr::rmarkdown} 
   %\VignetteEncoding{UTF-8}
 ---
