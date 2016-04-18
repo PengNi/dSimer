@@ -1,7 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 #include <string>
+
+#ifdef __APPLE__
+#include <unordered_map>
+#else
 #include <tr1/unordered_map>
+#endif
+
 using namespace std;
 
 #include <vector>
@@ -11,7 +17,12 @@ using namespace std;
 Rcpp::NumericMatrix PSB_termsim_cpp(Rcpp::NumericMatrix& go_jaccardindex,
   Rcpp::List& IC){
   
-  typedef std::tr1::unordered_map<std::string,float> informationcontent;
+  #ifdef __APPLE__
+    typedef std::unordered_map<std::string,float> informationcontent;
+  #else
+    typedef std::tr1::unordered_map<std::string,float> informationcontent;
+  #endif
+  
   informationcontent InfCon;
   {
     Rcpp::CharacterVector inames(IC.names());

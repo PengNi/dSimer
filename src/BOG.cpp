@@ -1,6 +1,13 @@
 #include <Rcpp.h>
 #include <string>
-#include <tr1/unordered_map>
+using namespace std;
+
+#ifdef __APPLE__
+  #include <unordered_map>
+#else
+  #include <tr1/unordered_map>
+#endif
+
 using namespace Rcpp;
 
 #include <algorithm>
@@ -14,9 +21,12 @@ Rcpp::NumericMatrix BOG_simmat_cpp(
   Rcpp::List& d2g,
   int totalGeneNum,
   Rcpp::List& GeneNumList){
+  #ifdef __APPLE__
+    typedef std::unordered_map<std::string,std::vector<std::string> > Disease2Gene;
+  #else
+    typedef std::tr1::unordered_map<std::string,std::vector<std::string> > Disease2Gene;
+  #endif
   
-
-  typedef std::tr1::unordered_map<std::string,std::vector<std::string> > Disease2Gene;
   Rcpp::CharacterVector dnames(d2g.names());
   Disease2Gene dgMap;
   {
@@ -26,8 +36,11 @@ Rcpp::NumericMatrix BOG_simmat_cpp(
       dgMap.insert( std::make_pair( dNames[i], genes ) );
     }
   }
-  
-  typedef std::tr1::unordered_map<std::string,int> D2GNum;
+  #ifdef __APPLE__
+    typedef std::unordered_map<std::string,int> D2GNum;
+  #else
+    typedef std::tr1::unordered_map<std::string,int> D2GNum;
+  #endif
   D2GNum d2gnum;
   {
     Rcpp::CharacterVector dNames(GeneNumList.names());
@@ -90,8 +103,13 @@ Rcpp::NumericMatrix BOG_normat_cpp(Rcpp::CharacterVector D1,
   Rcpp::List& matnameloc,
   Rcpp::List& maxsim,
   Rcpp::List& IC){
-    
+  
+  #ifdef __APPLE__
+    typedef std::unordered_map<std::string,int> matnamelocation;
+  #else
     typedef std::tr1::unordered_map<std::string,int> matnamelocation;
+  #endif
+    
     matnamelocation MatNameLoc;
     {
       Rcpp::CharacterVector mnames(matnameloc.names());
@@ -100,7 +118,12 @@ Rcpp::NumericMatrix BOG_normat_cpp(Rcpp::CharacterVector D1,
       }
     }
     
-    typedef std::tr1::unordered_map<std::string,float> maxsimvalue;
+    #ifdef __APPLE__
+      typedef std::unordered_map<std::string,float> maxsimvalue;
+    #else
+      typedef std::tr1::unordered_map<std::string,float> maxsimvalue;
+    #endif
+    
     maxsimvalue MaxSimVal;
     {
       Rcpp::CharacterVector mnames(maxsim.names());
@@ -109,7 +132,12 @@ Rcpp::NumericMatrix BOG_normat_cpp(Rcpp::CharacterVector D1,
       }
     }
     
-    typedef std::tr1::unordered_map<std::string,float> informationcontent;
+    #ifdef __APPLE__
+        typedef std::unordered_map<std::string,float> informationcontent;
+    #else
+        typedef std::tr1::unordered_map<std::string,float> informationcontent;
+    #endif
+    
     informationcontent InfCon;
     {
       Rcpp::CharacterVector inames(IC.names());

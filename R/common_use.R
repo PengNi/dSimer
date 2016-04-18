@@ -100,6 +100,7 @@ HypergeometricTest_onedisease<-function(d,go2g,allgene_assogo_num){
   return(dpvalue)
 }
 
+
 HypergeometricTest_onedisease_onego<-function(go,d,dlen,allgene_assogo_num){
   intersectnum<-length(intersect(d,go))
   pvalue<-1.0-phyper(intersectnum-1,length(go),allgene_assogo_num-length(go),dlen)
