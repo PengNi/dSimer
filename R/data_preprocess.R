@@ -180,6 +180,7 @@ LLSn2List_c<-function(LLSn){
 #'  which will be used in FunSim method
 #' @param LLSn data.frame of gene-gene normalized log-likelihood score in HumanNet
 #' @return  a list of normalized log-likelihood score
+##' @importFrom stats setNames
 #' @export
 #' @author Peng Ni
 #' @references Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 

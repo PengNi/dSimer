@@ -61,6 +61,8 @@ InformationContent<-function(T2G){
 #' @param method multiple testing method, the same as parameter in method p.adjust
 #' @param cutoff multiple testing cut off value
 #' @return a list of disease-GO term associations
+##' @importFrom stats phyper
+##' @importFrom stats p.adjust
 #' @export
 #' @author Peng Ni
 #' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}
