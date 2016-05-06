@@ -7,8 +7,8 @@
 #' can also be visualized by dSimer.
 #'
 #' \tabular{ll}{ Package: \tab dSimer\cr Type: \tab Package\cr Version: \tab
-#' 0.99.0\cr Date: \tab 12-10-2015\cr biocViews:\tab Bioinformatics,
-#' Similarity\cr Depends: \tab R (>= 3.2.0)\cr Imports: \tab Rcpp (>= 0.11.3), 
+#' 0.99.1\cr Date: \tab 12-10-2015\cr biocViews:\tab Bioinformatics,
+#' Similarity\cr Depends: \tab R (>= 3.3.0)\cr Imports: \tab stats, Rcpp (>= 0.11.3), 
 #' igraph (>= 1.0.1), ggplot2, reshape2, GO.db, AnnotationDbi, org.Hs.eg.db\cr 
 #' Suggests: \tab knitr, rmarkdown, BiocStyle\cr LinkingTo: \tab Rcpp\cr License: \tab
 #' GPL (>= 2)\cr }

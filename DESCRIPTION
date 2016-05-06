@@ -1,7 +1,7 @@
 Package: dSimer
 Type: Package
 Title: Integration of Disease Similarity Measures
-Version: 0.99.0
+Version: 0.99.1
 Date: 2015-12-10
 Authors@R: c(person(given = "Peng", family = "Ni",
      	    email = "nipeng@csu.edu.cn",
@@ -17,8 +17,9 @@ Description: dSimer is an R package which provides eight function-based methods
   perspectives. The disease similarity matrix obtained from these eight methods
   can also be visualized by dSimer.
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.3.0)
 Imports:
+    stats,
     Rcpp (>= 0.11.3),
     igraph (>= 1.0.1),
     ggplot2,
