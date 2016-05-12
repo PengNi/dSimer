@@ -26,8 +26,8 @@
 x2y_df2list<-function(x2ydf,xcol=1,ycol=2){
   colnames(x2ydf)[c(xcol,ycol)]<-c('V1','V2')
   
-  class(x2ydf[,xcol])<-"character"
-  class(x2ydf[,ycol])<-"character"
+  x2ydf[,xcol]<-as.character(x2ydf[,xcol])
+  x2ydf[,ycol]<-as.character(x2ydf[,ycol])
   
   xname<-unique(as.data.frame(x2ydf)[,xcol])
   x2y_list<-list(length=length(xname))
@@ -148,32 +148,6 @@ filterGO2Glists<-function(go2g){
 }
 
 
-predict_data_size = function(numeric_size, number_type = "numeric") {
-  if(number_type == "integer") {
-    byte_per_number = 4
-  } else if(number_type == "numeric") {
-    byte_per_number = 8
-  } else {
-    stop(sprintf("Unknown number_type: %s", number_type))
-  }
-  estimate_size_in_bytes = (numeric_size * byte_per_number)
-  class(estimate_size_in_bytes) = "object_size"
-  print(estimate_size_in_bytes, units = "auto")
-}
-
-
-LLSn2List_c<-function(LLSn){
-  class(LLSn[,1])<-"character"
-  class(LLSn[,2])<-"character"
-  
-  reslist<-vector("list",length = nrow(LLSn))
-  for(i in 1:nrow(LLSn)){
-    reslist[[i]]<-LLSn[i,3]
-  }
-  names(reslist)<-apply(LLSn[,c(1,2)],1,function(v){paste(v[1],v[2],sep = "|")})
-  return(reslist)
-}
-
 #' convert data.frame of HumanNet log-likelihood Score to list
 #' 
 #' convert HumanNet normalized log-likelihood score from data.frame to list,
@@ -193,8 +167,8 @@ LLSn2List_c<-function(LLSn){
 #' llsnlist<-LLSn2List(HumanNet_sample[1:100,])
 #' llsnlist
 LLSn2List<-function(LLSn){
-  class(LLSn[,1])<-"character"
-  class(LLSn[,2])<-"character"
+  LLSn[,1]<-as.character(LLSn[,1])
+  LLSn[,2]<-as.character(LLSn[,2])
   
   names<-unique(union(LLSn[,1],LLSn[,2]))
   

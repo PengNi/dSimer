@@ -3,9 +3,17 @@
 \docType{data}
 \name{interactome}
 \alias{interactome}
-\title{interactome data}
+\title{interactome}
+\value{
+interactome is a data.frame of 141296 rows and 2 columns. Each row indicates
+an interaction of two gene entrez ids.
+It was obtained from the reference below.
+}
 \description{
-a data.frame, contains interactome data in reference below
+interactome data
+}
+\examples{
+data(interactome)
 }
 \references{
 Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease 

@@ -23,7 +23,7 @@
 #' @examples
 #' data(d2g_separation)
 #' data(interactome)
-#' library(igraph)
+#' 
 #' graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 #' ds<-sample(names(d2g_separation),5)
 #' sep<-Separation(ds,ds,d2g_separation,graph_interactome)

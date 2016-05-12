@@ -3,10 +3,17 @@
 \docType{data}
 \name{go2g_sample}
 \alias{go2g_sample}
-\title{a sample of GO term-gene associations}
+\title{go2g_sample}
+\value{
+go2g_sample is a named list of length 465. The names are GO term ids (GOIDs)
+and list elements are vectors of gene symbols. 
+The entire data of GO term-gene assos can be obtained by function get_GOterm2GeneAssos.
+}
 \description{
-a sample list of GO term-gene associations, the entire data of GO term-gene
-can be obtained by function get_GOterm2GeneAssos
+a sample list of GO term-gene associations.
+}
+\examples{
+data(go2g_sample)
 }
 \seealso{
 \code{\link{get_GOterm2GeneAssos}}

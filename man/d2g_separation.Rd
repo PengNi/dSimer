@@ -3,10 +3,17 @@
 \docType{data}
 \name{d2g_separation}
 \alias{d2g_separation}
-\title{disease-gene associations}
+\title{d2g_separation}
+\value{
+d2g_separation is a named list of length 299 which stored disease-gene
+associations from the reference paper (see below). The names are diseases and 
+list elements are vectors of gene entrez ids.
+}
 \description{
-a list of disease-gene associations from the reference paper (see below) 
-which diseases are disease names and genes are entrez ids
+a list of disease-gene associations from the reference paper (see below).
+}
+\examples{
+data(d2g_separation)
 }
 \references{
 Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease 

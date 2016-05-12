@@ -3,10 +3,19 @@
 \docType{data}
 \name{graphlet_sig_hprd}
 \alias{graphlet_sig_hprd}
-\title{graphlet signature}
+\title{graphlet_sig_hprd}
+\value{
+#' graphlet_sig_hprd is a matrix of 9270 rows and 73 rows. The rownames
+of graphlet_sig_hprd are gene symbols of nodes from HPRD. Each row indicates a graphlet
+signature of one node.
+Graphlet signatures of nodes in HPRD PPI network were calculated 
+by ORCA tool, will be used in method Sun_topology.
+}
 \description{
-matrix, graphlet signatures of nodes in HPRD PPI network calculated by 
-ORCA tool, will be using in method Sun_topology
+graphlet signature of nodes in HPRD PPI network.
+}
+\examples{
+data(graphlet_sig_hprd)
 }
 \references{
 Hocevar T, Demsar J. A combinatorial approach to graphlet 

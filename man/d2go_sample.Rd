@@ -3,10 +3,18 @@
 \docType{data}
 \name{d2go_sample}
 \alias{d2go_sample}
-\title{a sample of disease-GO term associations}
+\title{d2go_sample}
+\value{
+d2go_sample is a named list of length 3. The names are are the DOIDs 
+(DOIDs are ids of terms in Disease Ontology, e.g. "DOID:4" ) and list 
+elements are vectors of GO term ids.
+The entire data of disease-GO term associations can be obtained by function HypergeometricTest.
+}
 \description{
-a sample list of disease-GO term associations, the entire data of disease-
-GO term associations can be obtained by function HypergeometricTest
+a sample list of disease-GO term associations.
+}
+\examples{
+data(d2go_sample)
 }
 \seealso{
 \code{\link{HypergeometricTest}}

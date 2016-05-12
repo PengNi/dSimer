@@ -3,10 +3,17 @@
 \docType{data}
 \name{d2g_fundo_entrezid}
 \alias{d2g_fundo_entrezid}
-\title{disease-gene associations}
+\title{d2g_fundo_entrezid}
+\value{
+d2g_fundo_entrezid is a named list of length 1855 which stored disease-gene 
+associations from FunDO. The names are the DOIDs (DOIDs are ids of terms 
+in Disease Ontology, e.g. "DOID:4" ) and list elements are vectors of Entrez gene IDs.
+}
 \description{
-a list of disease-gene associations from FunDO which diseases are DOIDs and
-genes are entrez ids
+a list of disease-gene associations from FunDO.
+}
+\examples{
+data(d2g_fundo_entrezid)
 }
 \references{
 Osborne J D, Flatow J, Holko M, et al. Annotating the human genome 

@@ -3,10 +3,17 @@
 \docType{data}
 \name{orbit_dependency_count}
 \alias{orbit_dependency_count}
-\title{orbit dependency count}
+\title{orbit_dependency_count}
+\value{
+orbit_dependency_count is a 73-dim vector, indicating 73 orbits' 
+dependency count in graphlet theory, used to calculate weight factor in 
+method setWeight.
+}
 \description{
-a 73-dim vector, indicating 73 orbits' dependency count in graphlet theory, 
-used to calculate weight factor in method setWeight
+orbit dependency count
+}
+\examples{
+data(orbit_dependency_count)
 }
 \references{
 Milenkovic T, Przulj N. Uncovering biological network function via 

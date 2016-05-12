@@ -3,10 +3,16 @@
 \docType{data}
 \name{weight}
 \alias{weight}
-\title{weight factor}
+\title{weight}
+\value{
+weight is a 73-dim vector, indicating 73 orbits' weight factor, will be used in
+method Sun_topology.
+}
 \description{
-a 73-dim vector, indicating 73 orbits' weight factor, will be used in
-method Sun_topology
+weight factor
+}
+\examples{
+data(weight)
 }
 \references{
 Sun K, Goncalves JP, Larminie C. Predicting disease associations 

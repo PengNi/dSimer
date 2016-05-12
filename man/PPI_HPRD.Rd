@@ -3,9 +3,20 @@
 \docType{data}
 \name{PPI_HPRD}
 \alias{PPI_HPRD}
-\title{PPI data from HPRD}
+\title{PPI_HPRD}
+\value{
+PPI_HPRD is a data.frame of 36867 rows and 2 columns. Each rows indicates
+an interaction of two gene symbols. It was fetched from HPRD.
+}
 \description{
-a data.frame, fetched from HPRD which genes are gene symbols
+PPI data from HPRD
+}
+\examples{
+data(PPI_HPRD)
+}
+\references{
+Prasad T S K, Goel R, Kandasamy K, et al. Human protein reference 
+database-2009 update[J]. Nucleic acids research, 2009, 37(suppl 1): D767-D772.
 }
 \keyword{dataset}
 

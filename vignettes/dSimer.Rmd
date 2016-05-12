@@ -122,7 +122,6 @@ For example:
 data(d2g_fundo_symbol)
 data(PPI_HPRD)
 
-library(igraph)
 graph_hprd<-graph.data.frame(PPI_HPRD,directed=FALSE) #get a igraph object based on HPRD PPI data
 
 ds<-sample(names(d2g_fundo_symbol),5)
@@ -170,7 +169,6 @@ data(d2g_separation)
 data(interactome)
 
 ## import ppi data to R by igraph
-library(igraph)
 graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 
 ## calculate separation of 5 sample diseases
@@ -189,7 +187,6 @@ For example:
 data(d2g_separation)
 data(interactome)
 
-library(igraph)
 graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 ds<-c("myocardial ischemia","myocardial infarction","coronary artery disease",
  "cerebrovascular disorders","arthritis, rheumatoid","diabetes mellitus, type 1",

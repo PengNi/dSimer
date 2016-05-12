@@ -3,11 +3,20 @@
 \docType{data}
 \name{HumanNet_sample}
 \alias{HumanNet_sample}
-\title{a sample of HumanNet likelihood score data, will be used in method FunSim}
+\title{HumanNet_sample}
+\value{
+HumanNet_sample is a data.frame has 22708 rows and 3 columns. Each row 
+indicates a pair of genes and their normalized likelihood score in HumanNet. 
+HumanNet_sample will be used in method FunSim after being converted to list 
+by method LLSn2List.
+The entire data of HumanNet can be downloaded from 
+the website http://www.functionalnet.org/humannet/ .
+}
 \description{
-data.frame, where each row indicates a pair of genes and 
-their normalized likelihood score in HumanNet, will be used in
-method FunSim after being converted to list by method LLSn2List
+a sample of HumanNet likelihood score data which will be used in method FunSim.
+}
+\examples{
+data(HumanNet_sample)
 }
 \references{
 Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 

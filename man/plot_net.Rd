@@ -48,7 +48,6 @@ matrix can't be visualized into a network by this method.
 data(d2g_separation)
 data(interactome)
 
-library(igraph)
 graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 ds<-c("myocardial ischemia","myocardial infarction","coronary artery disease",
  "cerebrovascular disorders","arthritis, rheumatoid","diabetes mellitus, type 1",

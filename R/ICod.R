@@ -25,7 +25,7 @@
 #' @examples
 #' data(d2g_fundo_symbol)
 #' data(PPI_HPRD)
-#' library(igraph)
+#' 
 #' graph_hprd<-graph.data.frame(PPI_HPRD,directed=FALSE) #get a igraph object based on HPRD data
 #' ds<-sample(names(d2g_fundo_symbol),5)
 #' ICod(ds,ds,d2g_fundo_symbol,graph_hprd)

@@ -36,7 +36,6 @@
 #' data(d2g_separation)
 #' data(interactome)
 #' 
-#' library(igraph)
 #' graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 
 #' ds<-c("myocardial ischemia","myocardial infarction","coronary artery disease",
@@ -86,7 +85,6 @@ plot_heatmap<-function(simmat,xlab="", ylab="",
 #' data(d2g_separation)
 #' data(interactome)
 #' 
-#' library(igraph)
 #' graph_interactome<-graph.data.frame(interactome,directed=FALSE)
 
 #' ds<-c("myocardial ischemia","myocardial infarction","coronary artery disease",
