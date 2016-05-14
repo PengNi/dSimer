@@ -7,6 +7,7 @@
 
 SEXP dSimer_BOG_simmat_cpp(SEXP d2gSEXP, SEXP totalGeneNumSEXP, SEXP GeneNumListSEXP);
 SEXP dSimer_BOG_normat_cpp(SEXP D1SEXP, SEXP D2SEXP, SEXP simmatSEXP, SEXP matnamelocSEXP, SEXP maxsimSEXP, SEXP ICSEXP);
+SEXP dSimer_go2g_full(SEXP go2gSEXP, SEXP go_offspSEXP);
 SEXP dSimer_TDistanceMat_cpp(SEXP SDistanceMatSEXP, SEXP ASEXP, SEXP bSEXP);
 SEXP dSimer_ICod_onepair_cpp(SEXP SDisSEXP, SEXP TDisSEXP, SEXP CSEXP);
 SEXP dSimer_PSB_termsim_cpp(SEXP go_jaccardindexSEXP, SEXP ICSEXP);
@@ -15,6 +16,7 @@ SEXP dSimer_Sun_topology_cpp(SEXP D1SEXP, SEXP D2SEXP, SEXP d2gSEXP, SEXP graphl
 R_CallMethodDef callMethods[]  = {
   {"dSimer_BOG_simmat_cpp", (DL_FUNC) &dSimer_BOG_simmat_cpp, 3},
   {"dSimer_BOG_normat_cpp", (DL_FUNC) &dSimer_BOG_normat_cpp, 6},
+  {"dSimer_go2g_full", (DL_FUNC) &dSimer_go2g_full, 2},
   {"dSimer_TDistanceMat_cpp", (DL_FUNC) &dSimer_TDistanceMat_cpp, 3},
   {"dSimer_ICod_onepair_cpp", (DL_FUNC) &dSimer_ICod_onepair_cpp, 3},
   {"dSimer_PSB_termsim_cpp", (DL_FUNC) &dSimer_PSB_termsim_cpp, 2},

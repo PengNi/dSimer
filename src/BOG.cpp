@@ -9,7 +9,6 @@ using namespace std;
 #endif
 
 using namespace Rcpp;
-
 #include <algorithm>
 #include <vector>
 #include <set>

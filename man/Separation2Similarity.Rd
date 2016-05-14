@@ -16,7 +16,8 @@ a similarity matrix
 convert a separation matrix to a similarity matrix
 }
 \examples{
-## see examples in function Separation
+a<-matrix(c(-4:4),3,3)
+Separation2Similarity(a)
 }
 \author{
 Peng Ni

@@ -21,7 +21,7 @@ a list which names are GO term IDs and elements are gene symbols annotated with 
 get GO-gene associations from GO.db and org.Hs.eg.db
 }
 \examples{
-## see examples in function PSB or Sun_function
+go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
 }
 \author{
 Peng Ni

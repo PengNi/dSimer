@@ -84,12 +84,12 @@ x2y_conv2_y2x<-function(x2ylist){
 #' Journal of biomedical informatics, 2012, 45(2): 363-371.
 #' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}
 #' @examples
-#' ## see examples in function PSB or Sun_function
+#' go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
 get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
                                rm.IEAs=TRUE,
                                rm.termlessthan3genes=TRUE){
   entKeys <- keys(org.Hs.eg.db, keytype="ENTREZID")
-  cols<-c("ENTREZID","SYMBOL","ONTOLOGY","GO","EVIDENCE")
+  cols<-c("SYMBOL","ONTOLOGY","GO","EVIDENCE")
   asso<-select(org.Hs.eg.db, keys=entKeys, columns=cols, keytype="ENTREZID")
   
   GOONTOLOGY<-match.arg(GOONTOLOGY)
@@ -98,7 +98,6 @@ get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
   if(rm.IEAs==TRUE){
     asso<-asso[which(asso$EVIDENCE!="IEA"),]
   }
-  
   bpnames<-unique(asso$GO)
   switch(GOONTOLOGY,BP={
     go_offsp<-as.list(GOBPOFFSPRING)
@@ -109,27 +108,15 @@ get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
   })
   
   go_offsp<-go_offsp[which(names(go_offsp) %in% bpnames)]
-  
+  go_offsp<-go_offsp[!(is.na(go_offsp))]
   go2g<-x2y_df2list(asso[,c(4,2)])
   
-  go2g_full<-list()
+  go2gfull<-go2g_full(go2g,go_offsp)
   
-  for(i in 1:length(go2g)){
-    go2g_full[[i]]<-go2g[[i]]
-    if(length(go_offsp[[names(go2g)[i]]])==1&&is.na(go_offsp[[names(go2g)[i]]][1])){
-      
-    }else{
-      offsp=go_offsp[[names(go2g)[i]]]
-      tmp<-Reduce(union,go2g[offsp])
-      go2g_full[[i]]<-unique(union(tmp,go2g[[i]]))
-    }
-    go2g_full[[i]]<-go2g_full[[i]][!(is.na(go2g_full[[i]]))]
-  }
-  names(go2g_full)<-names(go2g)
   if(rm.termlessthan3genes==TRUE){
-    go2g_full<-filterGO2Glists(go2g_full)
+    go2gfull<-filterGO2Glists(go2gfull)
   }
-  return(go2g_full)
+  return(go2gfull)
 }
 
 filterGO2Glists<-function(go2g){

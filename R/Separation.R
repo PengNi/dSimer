@@ -131,7 +131,8 @@ cal_single_set_distance<-function(gset,graph){
 #' @author Peng Ni
 #' @seealso \code{\link{Separation}}
 #' @examples
-#' ## see examples in function Separation
+#' a<-matrix(c(-4:4),3,3)
+#' Separation2Similarity(a)
 Separation2Similarity<-function(data){
   stopifnot(class(data)=="matrix")
   #diag(data)<-0

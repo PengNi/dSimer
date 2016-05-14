@@ -34,6 +34,18 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// go2g_full
+Rcpp::List go2g_full(Rcpp::List& go2g, Rcpp::List& go_offsp);
+RcppExport SEXP dSimer_go2g_full(SEXP go2gSEXP, SEXP go_offspSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< Rcpp::List& >::type go2g(go2gSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List& >::type go_offsp(go_offspSEXP);
+    __result = Rcpp::wrap(go2g_full(go2g, go_offsp));
+    return __result;
+END_RCPP
+}
 // TDistanceMat_cpp
 Rcpp::NumericMatrix TDistanceMat_cpp(Rcpp::NumericMatrix& SDistanceMat, float& A, float& b);
 RcppExport SEXP dSimer_TDistanceMat_cpp(SEXP SDistanceMatSEXP, SEXP ASEXP, SEXP bSEXP) {
