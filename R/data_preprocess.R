@@ -85,6 +85,7 @@ x2y_conv2_y2x<-function(x2ylist){
 #' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}
 #' @examples
 #' go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
+#' go2g
 get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
                                rm.IEAs=TRUE,
                                rm.termlessthan3genes=TRUE){
