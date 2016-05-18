@@ -1,0 +1,218 @@
+---
+title: "Integration of disease similarity methods and disease network visualization"
+author: "\\
+
+  Min Li (limin@mail.csu.edu.cn)\\
+  Peng Ni (<nipeng@csu.edu.cn>)\\
+  
+  School of Information Science and Engineering, Central South University, Changsha, 410083, China."
+date: "`r Sys.Date()`"
+output:
+  BiocStyle::html_document:
+    toc: yes
+  BiocStyle::pdf_document:
+    toc: yes
+csl: nature.csl
+vignette: >
+  %\VignetteIndexEntry{Integration of disease similarity methods and disease network visualization} 
+  %\VignettePackage{dSimer}
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+---
+```{r style, echo=FALSE, results="asis", message=FALSE}
+BiocStyle::markdown()
+knitr::opts_chunk$set(tidy = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r echo=FALSE, results='hide', message=FALSE}
+library(dSimer)
+```
+# Abstract
+Discovering disease-disease simialrties can be useful for us to inferring the mechanisms of complex diseases. And disease similarity has become the important basis in disease-related molecular function research. There have been a number of methods proposed for measuring disease similarity in recent years. But there are lacks of tools or web servers for the computation of these methods.
+We developed an R package dSimer which provides eight function-based methods for disease similarity calculation. These eight methods take advantage of diverse biological data which calculate disease similarity from different perspectives. The disease similarity matrix obtained from these eight methods can also be visualized by dSimer.
+
+# Introduction
+The quantification of similarity among diseases has drawn more and more attention in modern biology and medicine. Understanding similarity among diseases can not only help us gain deeper insights into complex diseases, but also lead to improvements in disease diagnosis, drug repurposing and new drug development. Due to the growing body of high-throughput biological data such as genomic and proteomic data, a number of methods have been proposed for the computation of similarity among diseases during the past decades.
+
+Methods for calculating disease similarity can be broadly grouped into two classes: semantic-based and function-based [1]. Here we present an R package dSimer, implementing eight function-based methods for disease similarity calculating. And besides, we also implemented methods for the visualization of disease similarity matrix.
+
+To start with dSimer package, type following code below:
+
+```{r, eval=FALSE}
+library(dSimer)
+help("dSimer")
+```
+
+# Function-based methods for disease similarity calculating
+
+## BOG
+**BOG** [2] is a method for disease similarity calculating only using disease-gene associations. We designed function __*BOG*__ to implement this method. And for the purpose of normalizing the matrix produced by method BOG, we implemented function __*Normalize*__.
+For example:
+```{r}
+data(d2g_separation) #get disease-gene associations
+ds<-sample(names(d2g_separation),5)
+ds
+sim<-BOG(ds,ds,d2g_separation)
+Normalize(sim) #normalize BOG sim scores
+```
+
+Note that disease-gene associations __*d2g_separation*__ is a list object that can be obtained by function __*x2y_df2list*__. Function __*x2y_df2list*__ take a data.frame which has two columns (one column contains disease ids and one column contains gene ids, each row declares an association between a disease and a gene) as a input. See an example below:
+
+```{r}
+options(stringsAsFactors = FALSE) #this may be neccessary
+ 
+d2g_fundo_sample<-read.table(text = "DOID:5218    IL6
+DOID:8649  EGFR
+DOID:8649	PTGS2
+DOID:8649	VHL
+DOID:8649	ERBB2
+DOID:8649	PDCD1
+DOID:8649	KLRC1
+DOID:5214	MPZ
+DOID:5214	EGR2
+DOID:5210	AMH")
+
+d2g_fundo_list<-x2y_df2list(d2g_fundo_sample)
+d2g_fundo_list
+```
+Function __*Normalize*__ normalize a matrix or a vector as the following formula:
+$$NormScore=\frac{OrigScore-MinScore}{MaxScore-MinScore}$$
+
+Here's an example:
+```{r}
+m<-matrix(1:9,3,3)
+m
+Normalize(m)
+```
+
+## PSB
+**PSB** [3] uses not only disease-gene associations but also GO-gene associations. We designed function __*PSB*__ to implement this method. Function __*PSB*__ needs disease-GO associations which can be obtained by function __*HypergeometricTest*__. 
+
+Here's an example for __*PSB*__:
+```{r}
+## get the data 
+data(go2g_sample)
+data(d2go_sample)
+
+ds<-names(d2go_sample)
+sim<-PSB(ds,ds,d2go_sample,go2g_sample)
+sim
+Normalize(sim)
+```
+## FunSim
+**FunSim** [1] is a method that takes advantage of gene function network data from HumanNet [4]. First we got the raw data from HumanNet, then we normalized the associated log likelihood score of gene pairs. Then we can use function __*FunSim*__ to mearsure similarity between diseases (note that we use function __*LLSn2List*__ to convert HumanNet data from data.frame to list, for more efficient calculating):
+```{r}
+## in this method, we must use disease-gene associations 
+## which genes are represented by entrez ids because of
+## HumanNet
+data(d2g_fundo_entrezid) ##get disease-gene associations
+data(HumanNet_sample)
+## we specified 5 DOIDs to match Human_sample
+ds<-c("DOID:8176","DOID:2394","DOID:3744","DOID:8466","DOID:5679")
+llsnlist<-LLSn2List(HumanNet_sample)
+FunSim(ds,ds,d2g_fundo_entrezid,llsnlist)
+```
+## ICod
+**ICod** [5] mearsures disease-disease similarities based on disease-related PPIs. We used an R graph __*igraph*__ to import PPI data into R.
+For example:
+```{r}
+## get disease-gene associations and HPRD PPI data
+data(d2g_fundo_symbol)
+data(PPI_HPRD)
+
+graph_hprd<-graph.data.frame(PPI_HPRD,directed=FALSE) #get a igraph object based on HPRD PPI data
+
+ds<-sample(names(d2g_fundo_symbol),5)
+ICod(ds,ds,d2g_fundo_symbol,graph_hprd)
+```
+## Sun's measures
+Sun [6] proposed three measures which use different biological information. These three measures are: annotation-baesd, function-based and topological-based.
+
+### Sun's annotation-based measure
+**Sun's annotation-based measure** used the information of disease-gene association data. We implemented function __*Sun_annotation*__ to calculate disease-disease similarity:
+```{r}
+data(d2g_separation) ## get disease-gene associations
+
+ds<-sample(names(d2g_separation),5)
+Sun_annotation(ds,ds,d2g_separation)
+```
+### Sun's function-based measure
+**Sun's function-based measure** uses both GO term annotations and disease-gene associations to estimate the disease similarity scores. We implemented function __*Sun_function*__ to perform this method like follows:
+```{r}
+## get a sample of disease-GO associations
+data(d2go_sample)
+ds<-names(d2go_sample)
+Sun_function(ds,ds,d2go_sample)
+```
+### Sun's topology-based measure
+**Sun's topology-based measure** takes advantage of the topology of PPI network and disease-gene association data to measure disease similarity scores. Futhurmore Function __*Sun_topology*__ was implemented for this method. And in this method, the graphlet signature of nodes in PPI were calculated by a tool **orca** [7] (see details in [6]).
+
+Here is an example:
+```{r}
+data(d2g_fundo_symbol)
+data(graphlet_sig_hprd) #get graphlet signatures of genes in HPRD PPI network
+data(weight)
+ds<-sample(names(d2g_fundo_symbol),5)
+Sun_topology(ds,ds,d2g_fundo_symbol,graphlet_sig_hprd,weight)
+```
+
+## Separation
+Method **Separation** is actually a method measuring a netowrk-based separation of disease pairs [8]. But the result can also be turned into similarity scores. And we implemented function __*Separation2Similarity*__ for this purpose as the following formula:
+$$SimScore=\frac{MaxSepScore-SepScore}{MaxSepScore-MinSepScore}$$
+
+Here is an example:
+```{r}
+## get the disease-gene association data and interactome data
+data(d2g_separation)
+data(interactome)
+
+## import ppi data to R by igraph
+graph_interactome<-graph.data.frame(interactome,directed=FALSE)
+
+## calculate separation of 5 sample diseases
+ds<-sample(names(d2g_separation),5)
+sep<-Separation(ds,ds,d2g_separation,graph_interactome)
+
+## convert separation into simialrity
+sim<-Separation2Similarity(sep)
+sim
+```
+
+# Visualization of disease similarity network
+We implemented two functions __*plot_heatmap*__ and __*plot_net*__ for the disease similarity network's visualization. Function __*plot_heatmap*__ is a reuse of function __*simplot*__ in package **DOSE** which shows the heatmap of disease similarity network. Given a cutoff, function __*plot_net*__ will show the relationships among diseases in a graph.
+For example:
+```{r}
+data(d2g_separation)
+data(interactome)
+
+graph_interactome<-graph.data.frame(interactome,directed=FALSE)
+ds<-c("myocardial ischemia","myocardial infarction","coronary artery disease",
+ "cerebrovascular disorders","arthritis, rheumatoid","diabetes mellitus, type 1",
+ "autoimmune diseases of the nervous system","demyelinating autoimmune diseases, cns",
+ "respiratory hypersensitivity","asthma","retinitis pigmentosa",
+ "retinal degeneration","macular degeneration")
+ 
+sep<-Separation(ds,ds,d2g_separation,graph_interactome)
+sim<-Separation2Similarity(sep)
+plot_heatmap(sim,font.size = 3)
+plot_net(sim,cutoff=0.2)
+```
+
+# References
+[1] Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring disease similarity by integrating semantic and gene functional association[J]. PloS one, 2014, 9(6): e99415.
+
+[2] Mathur S, Dinakarpandian D. Automated ontological gene annotation for computing disease similarity[J]. AMIA Summits on Translational Science Proceedings, 2010, 2010: 12.
+
+[3] Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semantic similarity[J]. Journal of biomedical informatics, 2012, 45(2): 363-371.
+
+[4] Lee I, Blom U M, Wang P I, et al. Prioritizing candidate disease genes by network-based boosting of genome-wide association data[J]. Genome research, 2011, 21(7): 1109-1121.
+
+[5] Paik H, Heo HS, Ban H, et al. Unraveling human protein interaction networks underlying co-occurrences of diseases and pathological conditions[J]. Journal of translational medicine, 2014, 12(1): 99.
+
+[6] Sun K, Gonçalves JP, Larminie C. Predicting disease associations via biological network analysis[J]. BMC bioinformatics, 2014, 15(1): 304.
+
+[7] Hočevar T, Demšar J. A combinatorial approach to graphlet counting[J]. Bioinformatics, 2014, 30(4): 559-565.
+
+[8] Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease relationships through the incomplete interactome[J]. Science, 2015, 347(6224): 1257601.
