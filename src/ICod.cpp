@@ -37,6 +37,9 @@ float ICod_onepair_cpp(Rcpp::NumericMatrix& SDis,
       denominator += TDis(i,j);
     }
   }
+  if(denominator==0){
+    return(0);
+  }
   return(numerator/denominator);
 }
 

@@ -22,6 +22,7 @@ get GO-gene associations from GO.db and org.Hs.eg.db
 }
 \examples{
 go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
+go2g
 }
 \author{
 Peng Ni

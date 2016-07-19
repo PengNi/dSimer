@@ -63,7 +63,7 @@ ICod<-function(D1,D2,d2g,graph,A=0.9,b=1,C=0){
   TDistance<-TDistanceMat_cpp(SDistanceMat = SDistance,A = A,b = b)
   
   message("calculating similarity of each disease pair..")
-  mat<-matrix(nrow = length(D1),ncol=length(D2),dimnames = list(D1,D2))
+  mat<-matrix(nrow = length(D1), ncol = length(D2),dimnames = list(D1,D2))
   if(identical(D1,D2)){
     for(i in 1:nrow(mat)){
       for(j in i:ncol(mat)){
@@ -97,8 +97,9 @@ ICod_onepair<-function(d1,d2,d2g,SDistance,TDistance,C=0){
     if(length(d2g[[d1]])==0||length(d2g[[d2]])==0){
       return(0)
     }
-    
-    return(ICod_onepair_cpp(SDistance[d2g[[d1]],d2g[[d2]]],TDistance[d2g[[d1]],d2g[[d2]]],C))
+    return(ICod_onepair_cpp(SDistance[d2g[[d1]],d2g[[d2]],drop=FALSE],
+                            TDistance[d2g[[d1]],d2g[[d2]],drop=FALSE],
+                            C))
   }
 }
 
