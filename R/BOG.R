@@ -55,9 +55,3 @@ BOG<-function(D1,D2,d2g){
   message("done..")
   return(sim)
 }
-
-
-
-
-
-
