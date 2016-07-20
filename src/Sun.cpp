@@ -283,9 +283,8 @@ Rcpp::NumericMatrix Sun_topology_cpp(Rcpp::CharacterVector& D1,
   }else{
     for(int i=0;i<D1.size();i++){
       for(int j=0;j<D2.size();j++){
-        if(D1[i]==D1[j]){
+        if(D1[i]==D2[j]){
           sim(i,j)=1;
-          sim(j,i)=1;
         }else{
           std::vector<std::string> gtmp1=dgMap[ Rcpp::as<std::string>(D1[i]) ];
           std::vector<std::string> gtmp2=dgMap[ Rcpp::as<std::string>(D2[j]) ];

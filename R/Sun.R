@@ -141,6 +141,7 @@ Sun_topology<-function(D1,D2,d2g,graphlet_sig_mat,weight){
   stopifnot(length(D1)>0 & length(D2)>0)
   
   message("calculating similarity of each disease pair..")
+  graphlet_sig_mat<-as.matrix(graphlet_sig_mat)
   result.matrix<-Sun_topology_cpp(D1,D2,d2g,graphlet_sig_mat,weight)
   message("done..")
   return(result.matrix)
