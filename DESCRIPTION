@@ -1,7 +1,7 @@
 Package: dSimer
 Type: Package
 Title: Integration of Disease Similarity Measures
-Version: 0.99.2
+Version: 0.99.3
 Date: 2015-12-10
 Authors@R: c(person(given = "Peng", family = "Ni", email =
         "nipeng@csu.edu.cn", role = c("aut", "cre")), person(given =
