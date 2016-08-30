@@ -158,12 +158,17 @@ Rcpp::NumericMatrix BOG_normat_cpp(Rcpp::CharacterVector D1,
         for(int j=i;j<D1.size();j++){
           std::string d1=Rcpp::as<std::string>(D1[i]);
           std::string d2=Rcpp::as<std::string>(D1[j]);
-          
-          float tmpval = (float) simmat(MatNameLoc[d1],MatNameLoc[d2])/
-                                 ((MaxSimVal[d1]+MaxSimVal[d2])/2);
-          tmpval *=((InfCon[d1]+InfCon[d2])/2);
-          sim(i,j)=tmpval;
-          sim(j,i)=tmpval;
+          float maxsum=(float)MaxSimVal[d1]+MaxSimVal[d2];
+          if(maxsum==0.0){
+            sim(i,j)=0.0;
+            sim(j,i)=0.0;
+          }else{
+            float tmpval = (float) simmat(MatNameLoc[d1],MatNameLoc[d2])/
+            (maxsum/2);
+            tmpval *=((InfCon[d1]+InfCon[d2])/2);
+            sim(i,j)=tmpval;
+            sim(j,i)=tmpval;
+          }
         }
       }
     }else{
@@ -171,15 +176,19 @@ Rcpp::NumericMatrix BOG_normat_cpp(Rcpp::CharacterVector D1,
         for(int j=0;j<D2.size();j++){
           std::string d1=Rcpp::as<std::string>(D1[i]);
           std::string d2=Rcpp::as<std::string>(D2[j]);
-          
-          float tmpval = (float) simmat(MatNameLoc[d1],MatNameLoc[d2])/((MaxSimVal[d1]+MaxSimVal[d2])/2);
-          tmpval *=((InfCon[d1]+InfCon[d2])/2);
-          sim(i,j)=tmpval;
+          float maxsum=(float)MaxSimVal[d1]+MaxSimVal[d2];
+          if(maxsum==0.0){
+            sim(i,j)=0.0;
+          }else{
+            float tmpval = (float) simmat(MatNameLoc[d1],MatNameLoc[d2])/
+            (maxsum/2);
+            tmpval *=((InfCon[d1]+InfCon[d2])/2);
+            sim(i,j)=tmpval;
+          }
         }
       }
     }
     return(sim);
-  
   }
 
 

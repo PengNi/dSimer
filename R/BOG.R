@@ -43,6 +43,8 @@ BOG<-function(D1,D2,d2g){
   
   message("calculating similarity matrix of diseases.. this may take a while..")
   simmat<-sim_mat(d2g)
+  d<-diag(simmat)
+  diag(simmat)<-0
   
   message("normalize the similarity matrix.. this may also take a while..")
   maxsim<-apply(simmat,1,max)
@@ -51,6 +53,7 @@ BOG<-function(D1,D2,d2g){
   snames<-as.list(c(0:(nrow(simmat)-1)))
   names(snames)<-row.names(simmat)
   
+  diag(simmat)<-d
   sim<-BOG_normat_cpp(D1,D2,simmat,snames,maxsim,IC);
   message("done..")
   return(sim)
