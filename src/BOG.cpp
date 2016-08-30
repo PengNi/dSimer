@@ -61,10 +61,6 @@ Rcpp::NumericMatrix BOG_simmat_cpp(
   for(int i=0;i<dlen;i++){
     for(int j=i;j<dlen;j++){
       
-      float denominator= (float) (d2gnum[ Rcpp::as<std::string>(dnames[i]) ]
-                                  *d2gnum[ Rcpp::as<std::string>(dnames[j]) ])/
-                                                  (totalnum*totalnum);
-      
       std::vector<std::string> ga=dgMap[ Rcpp::as<std::string>(dnames[i]) ];
       std::vector<std::string> gb=dgMap[ Rcpp::as<std::string>(dnames[j]) ];
       
@@ -79,15 +75,17 @@ Rcpp::NumericMatrix BOG_simmat_cpp(
       std::set<std::string> g(ga.begin(),ga.end());
       g.insert(gb.begin(),gb.end());
       
-      float jc = (float)s.size()/g.size();
-      
-      if(denominator==0){
-        sim(i,j)=0;
-        sim(j,i)=0;
+      double numerator = (double)s.size()*totalnum*totalnum;
+      double denominator = (double)g.size()
+        *(d2gnum[ Rcpp::as<std::string>(dnames[i]) ]
+            *d2gnum[ Rcpp::as<std::string>(dnames[j]) ]);
+      if(denominator==0.0){
+        sim(i,j)=0.0;
+        sim(j,i)=0.0;
       }else{
-        jc /= denominator;
-        sim(i,j)=jc;
-        sim(j,i)=jc;
+        numerator /= denominator;
+        sim(i,j)=numerator;
+        sim(j,i)=numerator;
       }
       
     }
