@@ -27,7 +27,11 @@ float toposim_onepair(std::vector<std::string>& gs1,
   
   int g1size=gs1.size(),g2size=gs2.size();
   
-  float sigsim[g1size][g2size];
+  // float sigsim[g1size][g2size];
+  float **sigsim = new float *[g1size];
+  for(int i=0;i<g1size;i++){
+    sigsim[i] = new float[g2size];
+  }
   std::unordered_map< std::string,int > gs1loc;
   {
     for(int i=0;i<g1size;i++){
@@ -112,6 +116,12 @@ float toposim_onepair(std::vector<std::string>& gs1,
     }
   }
   
+  for (int i=0;i<g1size;i++)
+  {
+    delete[] sigsim[i];
+  }                     
+  delete[] sigsim; 
+  
   //std::cout<<max1<<" "<<max2<<std::endl;
   return((max1+max2)/2);
   }
@@ -124,7 +134,11 @@ float toposim_onepair(std::vector<std::string>& gs1,
   
   int g1size=gs1.size(),g2size=gs2.size();
   
-  float sigsim[g1size][g2size];
+  // float sigsim[g1size][g2size];
+  float **sigsim = new float *[g1size];
+  for(int i=0;i<g1size;i++){
+    sigsim[i] = new float[g2size];
+  }
   std::tr1::unordered_map< std::string,int > gs1loc;
   {
     for(int i=0;i<g1size;i++){
@@ -208,6 +222,12 @@ float toposim_onepair(std::vector<std::string>& gs1,
       }
     }
   }
+  
+  for (int i=0;i<g1size;i++)
+  {
+    delete[] sigsim[i];
+  }                     
+  delete[] sigsim;
   
   //std::cout<<max1<<" "<<max2<<std::endl;
   return((max1+max2)/2);
