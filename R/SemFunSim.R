@@ -38,11 +38,11 @@ FunSim<-function(D1,D2,d2g,LLSnList){
   message("calculating simialrity matrix of diseases.. this may take a lot of time..")
   if(identical(D1,D2)){
     result.matrix<-matrix(nrow = length(D1),ncol = length(D1),dimnames = list(D1,D1))
-    for(i in 1:length(D1)){
-      for(j in i:length(D1)){
-        sim<-FunSim_onepair(D1[i],D1[j],d2g,LLSnList)
-        result.matrix[i,j]<-sim
-        result.matrix[j,i]<-sim
+    D1len<-length(D1)
+    for(i in 1:D1len){
+      for(j in i:D1len){
+        result.matrix[i,j]<-FunSim_onepair(D1[i],D1[j],d2g,LLSnList)
+        result.matrix[j,i]<-result.matrix[i,j]
       }
     }
     message("done..")

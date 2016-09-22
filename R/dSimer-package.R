@@ -197,8 +197,8 @@ NULL
 #' @aliases weight
 #' @docType data
 #' @keywords dataset
-#' @return weight is a 73-dim vector, indicating 73 orbits' weight factor, will be used in
-#' method Sun_topology.
+#' @return weight is a 73-dim vector, indicating 73 orbits' weight factor, will be 
+#' used in method Sun_topology.
 #' @examples 
 #' data(weight)
 #' @references Sun K, Goncalves JP, Larminie C. Predicting disease associations 
@@ -206,5 +206,34 @@ NULL
 #' @seealso \code{\link{setWeight}}, \code{\link{Sun_topology}}
 NULL
 
+#' d2s_hsdn
+#' 
+#' diseases, symptoms and their co-occurrences in PubMed
+#' @name d2s_hsdn
+#' @aliases d2s_hsdn
+#' @docType data
+#' @keywords dataset
+#' @return d2s_hsdn is a data.frame of 73726 rows and 3 columns, contains PubMed co-
+#' occurrences of diseases and symptoms, will be used in method CosineDFV.
+#' @examples 
+#' data(d2s_hsdn)
+#' @references Zhou X Z, Menche J, Barabasi A L, et al. Human symptoms-disease 
+#' network[J]. Nature communications, 2014, 5.
+#' @seealso \code{\link{CosineDFV}}
+NULL
 
-
+#' d2s_hsdn_sample
+#' 
+#' a sample of d2s_hsdn
+#' @name d2s_hsdn_sample
+#' @aliases d2s_hsdn_sample
+#' @docType data
+#' @keywords dataset
+#' @return d2s_hsdn__sample is a data.frame of 1480 rows and 3 columns, contains PubMed co-
+#' occurrences of diseases and symptoms. It is a sample of d2s_hsdn.
+#' @examples 
+#' data(d2s_hsdn_sample)
+#' @references Zhou X Z, Menche J, Barabasi A L, et al. Human symptoms-disease 
+#' network[J]. Nature communications, 2014, 5.
+#' @seealso \code{\link{d2s_hsdn}}, \code{\link{CosineDFV}}
+NULL

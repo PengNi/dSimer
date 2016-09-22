@@ -30,8 +30,9 @@ x2y_df2list<-function(x2ydf,xcol=1,ycol=2){
   x2ydf[,ycol]<-as.character(x2ydf[,ycol])
   
   xname<-unique(as.data.frame(x2ydf)[,xcol])
-  x2y_list<-list(length=length(xname))
-  for(i in 1:length(xname)){
+  xnamelen<-length(xname)
+  x2y_list<-list(length=xnamelen)
+  for(i in 1:xnamelen){
     x2y_list[[i]]<-unique(c(x2ydf[x2ydf$V1==xname[i],]$V2))
   }
   names(x2y_list)<-xname
@@ -124,7 +125,8 @@ filterGO2Glists<-function(go2g){
   p_i=1
   resultlist<-list()
   resultname<-list()
-  for(i in 1:length(go2g)){
+  go2glen<-length(go2g)
+  for(i in 1:go2glen){
     if(length(go2g[[i]])>2){
       resultlist[[p_i]]<-go2g[[i]]
       resultname[[p_i]]<-names(go2g)[i]
@@ -162,8 +164,8 @@ LLSn2List<-function(LLSn){
   
   LLSnSMat<-vector("list",length = length(names))
   names(LLSnSMat)<-names
-  
-  for(i in 1:length(LLSnSMat)){
+  llsnsmlen<-length(LLSnSMat)
+  for(i in 1:llsnsmlen){
     LLSnSMat[[i]]<-vector("numeric")
   }
   for(n in names){

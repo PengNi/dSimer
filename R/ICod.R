@@ -44,11 +44,13 @@ ICod<-function(D1,D2,d2g,graph,A=0.9,b=1,C=0){
   neighbours<-neighborhood(graph,1,nodes = newGenes,mode="all")
   names(neighbours)<-newGenes
   
-  for(i in 1:length(neighbours)){
+  neighlen<-length(neighbours)
+  for(i in 1:neighlen){
     neighbours[[i]]<-neighbours[[i]]$name
   }
   
-  for(i in 1:length(newD)){
+  newDlen<-length(newD)
+  for(i in 1:newDlen){
     tmp_v<-intersect(d2g[[newD[i]]],newGenes)
     allneighbours<-Reduce(union,neighbours[tmp_v])
     newD2g[[newD[i]]]<-union(tmp_v,allneighbours)
@@ -65,8 +67,10 @@ ICod<-function(D1,D2,d2g,graph,A=0.9,b=1,C=0){
   message("calculating similarity of each disease pair..")
   mat<-matrix(nrow = length(D1), ncol = length(D2),dimnames = list(D1,D2))
   if(identical(D1,D2)){
-    for(i in 1:nrow(mat)){
-      for(j in i:ncol(mat)){
+    matnr<-nrow(mat)
+    matnc<-ncol(mat)
+    for(i in 1:matnr){
+      for(j in i:matnc){
         val<-ICod_onepair(D1[i],D2[j],newD2g,SDistance,TDistance,C)
         mat[i,j]<-val
         mat[j,i]<-val

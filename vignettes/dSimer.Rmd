@@ -181,7 +181,7 @@ sim
 ```
 
 # Visualization of disease similarity network
-We implemented two functions __*plot_heatmap*__ and __*plot_net*__ for the disease similarity network's visualization. Function __*plot_heatmap*__ is a reuse of function __*simplot*__ in package **DOSE** which shows the heatmap of disease similarity network. Given a cutoff, function __*plot_net*__ will show the relationships among diseases in a graph.
+We implemented two functions __*plot_heatmap*__ and __*plot_net*__ for the disease similarity network's visualization. Function __*plot_heatmap*__ is a reuse of function __*simplot*__ in package **DOSE** [9] which shows the heatmap of disease similarity network. Given a cutoff, function __*plot_net*__ will show the relationships among diseases in a graph.
 For example:
 ```{r}
 data(d2g_separation)
@@ -216,3 +216,5 @@ plot_net(sim,cutoff=0.2)
 [7] Hočevar T, Demšar J. A combinatorial approach to graphlet counting[J]. Bioinformatics, 2014, 30(4): 559-565.
 
 [8] Menche J, Sharma A, Kitsak M, et al. Uncovering disease-disease relationships through the incomplete interactome[J]. Science, 2015, 347(6224): 1257601.
+
+[9] Yu G, Wang L G, Yan G R, et al. DOSE: an R/Bioconductor package for disease ontology semantic and enrichment analysis[J]. Bioinformatics, 2015, 31(4): 608-609.

@@ -5,8 +5,8 @@
 \alias{weight}
 \title{weight}
 \value{
-weight is a 73-dim vector, indicating 73 orbits' weight factor, will be used in
-method Sun_topology.
+weight is a 73-dim vector, indicating 73 orbits' weight factor, will be 
+used in method Sun_topology.
 }
 \description{
 weight factor
