@@ -47,7 +47,7 @@ help("dSimer")
 ```
 
 # The standard cosine similarity method
-The cosine similarity method is a widely used standard measure in disease association analyses [1, 2]. First it constructs feature vectors for diseases from literature or by using other biological data. Then it calculate the cosine of the angle between normalized vector pairs as the similarity scores between diseases. We implemented **CosineDFV** for this method:
+The cosine similarity method is a widely used standard measure in disease association analyses [1, 2]. First it constructs feature vectors for diseases from literature or by using other biological data. Then it calculate the cosine of the angle between normalized vector pairs as the similarity scores between diseases. We implemented function __*CosineDFV*__ for this method:
 
 ```{r}
 data(d2s_hsdn) #get disease-symptom associations for constructing feature vectors
