@@ -1,6 +1,6 @@
 Package: dSimer
 Type: Package
-Title: Integration of Disease Similarity Measures
+Title: Integration of disease similarity methods and disease network visualization
 Version: 0.99.4
 Date: 2015-12-10
 Authors@R: c(person(given = "Peng", family = "Ni", email =
@@ -9,21 +9,22 @@ Authors@R: c(person(given = "Peng", family = "Ni", email =
         "aut"), person(given = "Zhihui", family = "Fei", email = 
         "379666774@qq.com", role  = "ctb"), person(given = "Ping", 
         family = "Huang", email = "1615809243@qq.com", role  = "ctb"))
-Author: Peng Ni <nipeng@csu.edu.cn>, Min Li <limin@mail.csu.edu.cn> 
+Author: Min Li <limin@mail.csu.edu.cn>, Peng Ni <nipeng@csu.edu.cn>  
         with contributions from Zhihui Fei and Ping Huang.
 Maintainer: Peng Ni <nipeng@csu.edu.cn>
-Description: dSimer is an R package which provides eight function-based
-        methods for disease similarity calculation. These eight methods
-        take advantage of diverse biological data which calculate
-        disease similarity from different perspectives. The disease
-        similarity matrix obtained from these eight methods can also be
-        visualized by dSimer.
+Description: dSimer is an R package which provides computation of nine 
+        methods for measuring disease-disease similarity, including a 
+        standard cosine similarity measure and eight function-based 
+        methods. The disease similarity matrix obtained from these nine 
+        methods can be visualized through heatmap and network. Biological 
+        data widely used in disease-disease associations study are also 
+        provided by dSimer.
 Depends: R (>= 3.3.0), igraph (>= 1.0.1)
 Imports: stats, Rcpp (>= 0.11.3), ggplot2, reshape2, GO.db,
         org.Hs.eg.db, AnnotationDbi
 Suggests: knitr, rmarkdown, BiocStyle
 LinkingTo: Rcpp
 License: GPL (>= 2)
-biocViews: Software,Visualization
+biocViews: Software, Visualization, Network
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1

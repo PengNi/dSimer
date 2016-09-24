@@ -5,8 +5,8 @@
 \alias{d2s_hsdn}
 \title{d2s_hsdn}
 \value{
-d2s_hsdn is a data.frame of 73726 rows and 3 columns, contains PubMed co-
-occurrences of diseases and symptoms, will be used in method CosineDFV.
+d2s_hsdn is a data.frame of 73726 rows and 3 columns, contains PubMed 
+co-occurrences of diseases and symptoms, will be used in method CosineDFV.
 }
 \description{
 diseases, symptoms and their co-occurrences in PubMed

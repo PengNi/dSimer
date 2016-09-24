@@ -4,24 +4,26 @@
 \name{dSimer-package}
 \alias{dSimer}
 \alias{dSimer-package}
-\title{Integration of Disease Similarity Methods}
+\title{Integration of disease similarity methods and disease network visualization}
 \description{
-dSimer is an R package which provides eight function-based methods 
-for disease similarity calculation. These eight methods take advantage of 
-diverse biological data which calculate disease similarity from different 
-perspectives. The disease similarity matrix obtained from these eight methods 
-can also be visualized by dSimer.
+dSimer is an R package which provides computation of nine 
+methods for measuring disease-disease similarity, including a 
+standard cosine similarity measure and eight function-based 
+methods. The disease similarity matrix obtained from these nine 
+methods can be visualized through heatmap and network. Biological 
+data widely used in disease-disease associations study are also 
+provided by dSimer.
 }
 \details{
 \tabular{ll}{ Package: \tab dSimer\cr Type: \tab Package\cr Version: \tab
-0.99.4\cr Date: \tab 12-10-2015\cr biocViews:\tab Software, 
-Visualization\cr Depends: \tab R (>= 3.3.0), igraph (>= 1.0.1)\cr Imports: \tab stats, Rcpp (>= 0.11.3), 
-ggplot2, reshape2, GO.db, AnnotationDbi, org.Hs.eg.db\cr 
+0.99.4\cr Date: \tab 12-10-2015\cr biocViews:\tab Software, Visualization, 
+Network\cr Depends: \tab R (>= 3.3.0), igraph (>= 1.0.1)\cr Imports: \tab 
+stats, Rcpp (>= 0.11.3), ggplot2, reshape2, GO.db, AnnotationDbi, org.Hs.eg.db\cr 
 Suggests: \tab knitr, rmarkdown, BiocStyle\cr LinkingTo: \tab Rcpp\cr License: \tab
 GPL (>= 2)\cr }
 }
 \author{
-Peng Ni, Min Li
+Min Li, Peng Ni
 }
 \keyword{package}
 
