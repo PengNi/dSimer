@@ -50,7 +50,7 @@ sim<-Separation2Similarity(sep)
 plot_heatmap(sim)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Yu G, Wang L G, Yan G R, et al. DOSE: an R/Bioconductor package for 

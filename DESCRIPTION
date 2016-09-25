@@ -1,7 +1,7 @@
 Package: dSimer
 Type: Package
 Title: Integration of disease similarity methods and disease network visualization
-Version: 0.99.4
+Version: 0.99.5
 Date: 2015-12-10
 Authors@R: c(person(given = "Peng", family = "Ni", email =
         "nipeng@csu.edu.cn", role = c("aut", "cre")), person(given =

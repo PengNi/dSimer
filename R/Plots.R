@@ -27,7 +27,7 @@
 ##' @importFrom ggplot2 %+replace%
 ##' @importFrom reshape2 melt
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Yu G, Wang L G, Yan G R, et al. DOSE: an R/Bioconductor package for 
 #' disease ontology semantic and enrichment analysis[J]. 
 #' Bioinformatics, 2015, 31(4): 608-609.
@@ -67,11 +67,10 @@ plot_heatmap<-function(simmat,xlab="", ylab="",
 #' @param vertex.label.cex cex of vertex label
 #' @param vertex.shape vertex shape
 #' @param vertex.color vertex color
-#' @param vertex.size vertex size
 #' @param vertexsizefold a fold of vertex size
 #' @param edge.color edge color
 #' @param layout layout
-#' @return a igraph plot object
+#' @return an igraph plot object
 #' @importFrom igraph plot.igraph
 #' @importFrom igraph layout.fruchterman.reingold
 #' @importFrom igraph graph.adjacency
@@ -79,7 +78,7 @@ plot_heatmap<-function(simmat,xlab="", ylab="",
 #' @importFrom igraph induced.subgraph
 #' @importFrom igraph degree
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @examples
 #' 
 #' data(d2g_separation)
@@ -103,7 +102,6 @@ plot_net<-function(simmat,
                    vertex.label.color='black',
                    vertex.label.cex=0.8,
                    vertex.shape="circle",
-                   vertex.size=1,
                    vertexsizefold=5,
                    vertex.color="paleturquoise",
                    edge.color="red",
@@ -147,7 +145,7 @@ plot_net<-function(simmat,
               layout=layout)
 }
 
-## simplot author Yu Guangchuang
+## simplot author Yu Guangchuang from DOSE
 simplot <- function(sim, xlab="", ylab="", color.low="white", color.high="red", labs=TRUE, digits=2, labs.size=3, font.size=14, readable=FALSE ) {
   sim.df <- as.data.frame(sim)
   if(readable == TRUE) {
@@ -209,10 +207,63 @@ theme_dose <- function(font.size=14) {
     )
 }
 
-
-
-
-
-
-
-
+#' plot disease-gene (or GO term etc.) associations as a bipartite graph
+#' 
+#' plot a bipartite graph which visualizes associations between diseases and genes 
+#' (or GO terms etc.)
+#' @param xylist a named list object which names are diseases and each element of the
+#' list is a gene set with respect to each disease.
+#' @param vertex.color1 vertex color
+#' @param vertex.color2 another vertex color
+#' @param vertex.label.font font size
+#' @param vertex.label.dist font dist
+#' @param vertex.label.color font text color
+#' @param vertex.label.cex cex of vertex label
+#' @param edge.color edge color
+#' @param layout layout
+#' @return an igraph plot object
+#' @importFrom igraph plot.igraph
+#' @importFrom igraph layout.kamada.kawai
+#' @importFrom igraph graph_from_incidence_matrix
+#' @export
+#' @author Peng Ni, Min Li
+#' @examples
+#' data(d2g_fundo_symbol)
+#' d2g_sample<-sample(d2g_fundo_symbol, 3)
+#' plot_bipartite(d2g_sample)
+plot_bipartite<-function(xylist,
+                         vertex.color1="darkseagreen", 
+                         vertex.color2="turquoise1", 
+                         vertex.label.font=2,
+                         vertex.label.dist=0,
+                         vertex.label.color='black',
+                         vertex.label.cex=0.8,
+                         edge.color="black",
+                         layout=layout.kamada.kawai){
+  llen<-length(xylist)
+  eles<-unique(unlist(xylist))
+  elelen<-length(eles)
+  mat<-matrix(data = 0, nrow = llen, 
+              ncol = elelen, 
+              dimnames = list(names(xylist), eles))
+  for(i in 1:llen){
+    ele<-xylist[[i]]
+    lname<-names(xylist[i])
+    for(e in ele){
+      mat[lname, e]=1
+    }
+  }
+  g<-graph_from_incidence_matrix(mat, weighted=TRUE)
+  vertex_shape<-c("circle", "square")[1+(V(g)$type==FALSE)]
+  vertex_color<-c(vertex.color1, vertex.color2)[1+(V(g)$type==FALSE)]
+  plot.igraph(g, 
+              vertex.label.font=vertex.label.font, 
+              vertex.label.dist=vertex.label.dist, 
+              vertex.label.color=vertex.label.color, 
+              vertex.label.cex=vertex.label.cex, 
+              edge.color=edge.color, 
+              layout=layout, 
+              vertex.shape=vertex_shape, 
+              vertex.color=vertex_color, 
+              vertex.size=12)
+}

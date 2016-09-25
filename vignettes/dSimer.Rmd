@@ -205,8 +205,18 @@ sim<-Separation2Similarity(sep)
 sim
 ```
 
+# Visualization
+## Visualization of disease-gene associations
+Disease-gene associations are the most widely used information to measure disease similarity in function-based methods. Here we provide function __*plot_bipartite*__ for users to observe associations between diseases and genes more intuitively. This function can also visualize other associations like disease-GO term associations. 
+Here's an example:
 
-# Visualization of disease similarity network
+```{r}
+data(d2g_fundo_symbol)
+d2g_sample<-d2g_fundo_symbol[1:10]
+plot_bipartite(d2g_sample)
+```
+
+## Visualization of disease similarity network
 We implemented two functions __*plot_heatmap*__ and __*plot_net*__ for the disease similarity network's visualization. Function __*plot_heatmap*__ is a reuse of function __*simplot*__ in package **DOSE** [11] which shows the heatmap of disease similarity network. Given a cutoff, function __*plot_net*__ will show the relationships among diseases in a graph.
 For example:
 

@@ -6,8 +6,8 @@
 \usage{
 plot_net(simmat, cutoff = 1, vertex.label.font = 2,
   vertex.label.dist = 0.5, vertex.label.color = "black",
-  vertex.label.cex = 0.8, vertex.shape = "circle", vertex.size = 1,
-  vertexsizefold = 5, vertex.color = "paleturquoise", edge.color = "red",
+  vertex.label.cex = 0.8, vertex.shape = "circle", vertexsizefold = 5,
+  vertex.color = "paleturquoise", edge.color = "red",
   layout = layout.fruchterman.reingold)
 }
 \arguments{
@@ -26,8 +26,6 @@ no less than cutoff will be visualized in the network}
 
 \item{vertex.shape}{vertex shape}
 
-\item{vertex.size}{vertex size}
-
 \item{vertexsizefold}{a fold of vertex size}
 
 \item{vertex.color}{vertex color}
@@ -37,7 +35,7 @@ no less than cutoff will be visualized in the network}
 \item{layout}{layout}
 }
 \value{
-a igraph plot object
+an igraph plot object
 }
 \description{
 plot a network/graph of a symmetric disease similarity matrix, note that a unsymmetric
@@ -60,6 +58,6 @@ sim<-Separation2Similarity(sep)
 plot_net(sim,cutoff=0.2)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 
