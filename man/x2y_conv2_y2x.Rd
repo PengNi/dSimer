@@ -7,7 +7,8 @@
 x2y_conv2_y2x(x2ylist)
 }
 \arguments{
-\item{x2ylist}{a list which the names are xs and the elements are ys of each x}
+\item{x2ylist}{a list which the names are xs and the elements are ys 
+of each x}
 }
 \value{
 a list of y2x
@@ -20,6 +21,6 @@ data(go2g_sample)
 g2go_sample<-x2y_conv2_y2x(go2g_sample[1:100])
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 

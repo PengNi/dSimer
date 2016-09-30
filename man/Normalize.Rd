@@ -20,7 +20,7 @@ sim<-matrix(1:9,3,3)
 Normalize(sim)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 

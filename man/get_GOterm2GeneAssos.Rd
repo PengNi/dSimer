@@ -4,32 +4,39 @@
 \alias{get_GOterm2GeneAssos}
 \title{get GO-gene associations}
 \usage{
-get_GOterm2GeneAssos(GOONTOLOGY = c("BP", "MF", "CC"), rm.IEAs = TRUE,
+get_GOterm2GeneAssos(GOONTOLOGY = c("BP", "MF", "CC"),
+  geneid = c("ENTREZID", "SYMBOL"), rm.IEAs = TRUE,
   rm.termlessthan3genes = TRUE)
 }
 \arguments{
 \item{GOONTOLOGY}{"BP" or "MF" or "CC}
 
-\item{rm.IEAs}{logical value, remove GO terms with evidence "IEA" or not}
+\item{geneid}{gene id type, "ENTREZID" or "SYMBOL"}
 
-\item{rm.termlessthan3genes}{logical value, remove terms whose number of annotated genes are less than 3 or not}
+\item{rm.IEAs}{logical value, remove GO terms with evidence "IEA" or 
+not}
+
+\item{rm.termlessthan3genes}{logical value, remove terms whose number 
+of annotated genes are less than 3 or not}
 }
 \value{
-a list which names are GO term IDs and elements are gene symbols annotated with GO terms
+a list which names are GO term IDs and elements are gene ids 
+or symbols annotated with GO terms
 }
 \description{
 get GO-gene associations from GO.db and org.Hs.eg.db
 }
 \examples{
-go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
+go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP", geneid="SYMBOL")
 go2g
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
-Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semantic similarity[J]. 
-Journal of biomedical informatics, 2012, 45(2): 363-371.
+Mathur S, Dinakarpandian D. Finding disease similarity based 
+on implicit semantic similarity[J]. Journal of biomedical informatics, 
+2012, 45(2): 363-371.
 }
 \seealso{
 \code{\link{PSB}}, \code{\link{Sun_function}}

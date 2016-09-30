@@ -7,7 +7,8 @@
 LLSn2List(LLSn)
 }
 \arguments{
-\item{LLSn}{data.frame of gene-gene normalized log-likelihood score in HumanNet}
+\item{LLSn}{data.frame of gene-gene normalized log-likelihood score in 
+HumanNet}
 }
 \value{
 a list of normalized log-likelihood score
@@ -23,7 +24,7 @@ llsnlist<-LLSn2List(HumanNet_sample[1:100,])
 llsnlist
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \references{
 Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 

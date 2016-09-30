@@ -30,9 +30,7 @@ data(go2g_sample)
 data(d2go_sample)
 
 ##### the entire associations can be obtained by follows:
-## go2g<-get_GOterm2GeneAssos(GOONTOLOGY = "BP") #get go-gene associations
-## ## in this method, we must use disease-gene associations
-## ## which genes are represented by gene symbols
+## go2g<-get_GOterm2GeneAssos(GOONTOLOGY = "BP", geneid="SYMBOL") #get go-gene associations
 ## data(d2g_fundo_symbol)
 ## d2go<-HypergeometricTest(d2g = d2g_fundo_symbol,go2g = go2g)
 ##### ###################################################
@@ -49,6 +47,7 @@ Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semanti
 Journal of biomedical informatics, 2012, 45(2): 363-371.
 }
 \seealso{
-\code{\link{get_GOterm2GeneAssos}}, \code{\link{HypergeometricTest}}, \code{\link{Normalize}}
+\code{\link{get_GOterm2GeneAssos}}, \code{\link{HypergeometricTest}}, 
+\code{\link{Normalize}}
 }
 

@@ -67,9 +67,7 @@ Sun_annotation<-function(D1,D2,d2g){
 #' data(d2go_sample)
 #' 
 #' ##### the entire disease-GO associations can be obtained by follows:
-#' ## go2g<-get_GOterm2GeneAssos(GOONTOLOGY = "BP") #get go-gene associations
-#' ## ## in this method, we must use disease-gene associations
-#' ## ## which genes are represented by gene symbols
+#' ## go2g<-get_GOterm2GeneAssos(GOONTOLOGY = "BP", geneid="SYMBOL") #get go-gene associations
 #' ## data(d2g_fundo_symbol)
 #' ## d2go<-HypergeometricTest(d2g = d2g_fundo_symbol,go2g = go2g)
 #' ##### ###################################################

@@ -37,6 +37,6 @@ DOID:5210	AMH")
 d2g_fundo_list<-x2y_df2list(d2g_fundo_sample)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 

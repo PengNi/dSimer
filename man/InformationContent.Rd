@@ -20,6 +20,6 @@ data(d2g_fundo_symbol)
 InformationContent(d2g_fundo_symbol[1:5])
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 

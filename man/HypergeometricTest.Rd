@@ -11,7 +11,8 @@ HypergeometricTest(d2g, go2g, method = "BH", cutoff = 0.05)
 
 \item{go2g}{a list of GOterm-gene associations}
 
-\item{method}{multiple testing method, the same as parameter in method p.adjust}
+\item{method}{multiple testing method, the same as parameter in method 
+p.adjust}
 
 \item{cutoff}{multiple testing cut off value}
 }
@@ -19,19 +20,22 @@ HypergeometricTest(d2g, go2g, method = "BH", cutoff = 0.05)
 a list of disease-GO term associations
 }
 \description{
-given disease-gene associations and go-gene associations, return disease-go associations by using hypergeometric test and fdr mulitiple testing
+given disease-gene associations and go-gene associations, return 
+disease-go associations by using hypergeometric test and fdr mulitiple 
+testing
 }
 \examples{
-## see examples in function PSB or Sun_function
+## see more examples in function PSB or Sun_function
 data(d2go_sample)
 data(go2g_sample)
 data(d2g_fundo_symbol)
 HypergeometricTest(d2g_fundo_symbol[names(d2go_sample)],go2g_sample)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 \seealso{
-\code{\link{PSB}}, \code{\link{Sun_function}}
+\code{\link{PSB}}, \code{\link{Sun_function}}, 
+\code{\link{get_GOterm2GeneAssos}}
 }
 

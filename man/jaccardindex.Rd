@@ -27,6 +27,6 @@ d2<-names(d2go_sample)[2]
 jaccardindex(d1,d2,d2go_sample)
 }
 \author{
-Peng Ni
+Peng Ni, Min Li
 }
 

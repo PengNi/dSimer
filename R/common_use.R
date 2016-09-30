@@ -6,7 +6,7 @@
 #' @param x2y a list of disease-gene associations which consists x1 and x2
 #' @return numeric value of a jaccard index of x1 and x2
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @examples
 #' ## this function is not just for disease-gene associations
 #' data(d2go_sample)
@@ -42,7 +42,7 @@ informationContent<-function(x,T2G,totalGeneNum){
 #' @param T2G a list of Term-Gene associations which names are term ids
 #' @return a list of IC values of inputted term ids
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @examples
 #' data(d2g_fundo_symbol)
 #' InformationContent(d2g_fundo_symbol[1:5])
@@ -55,26 +55,32 @@ InformationContent<-function(T2G){
 
 #' Hypergeometric test and multiple testing
 #' 
-#' given disease-gene associations and go-gene associations, return disease-go associations by using hypergeometric test and fdr mulitiple testing
+#' given disease-gene associations and go-gene associations, return 
+#' disease-go associations by using hypergeometric test and fdr mulitiple 
+#' testing
 #' @param d2g a list of disease-gene associations
 #' @param go2g a list of GOterm-gene associations
-#' @param method multiple testing method, the same as parameter in method p.adjust
+#' @param method multiple testing method, the same as parameter in method 
+#' p.adjust
 #' @param cutoff multiple testing cut off value
 #' @return a list of disease-GO term associations
 ##' @importFrom stats phyper
 ##' @importFrom stats p.adjust
 #' @export
-#' @author Peng Ni
-#' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}
+#' @author Peng Ni, Min Li
+#' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}, 
+#' \code{\link{get_GOterm2GeneAssos}}
 #' @examples
-#' ## see examples in function PSB or Sun_function
+#' ## see more examples in function PSB or Sun_function
 #' data(d2go_sample)
 #' data(go2g_sample)
 #' data(d2g_fundo_symbol)
 #' HypergeometricTest(d2g_fundo_symbol[names(d2go_sample)],go2g_sample)
 HypergeometricTest<-function(d2g,go2g,method="BH",cutoff=0.05){
-  allgene_assogo_num<-length(unique(unlist(go2g)))
+  allgene_assogo<-unique(unlist(go2g))
+  allgene_assogo_num<-length(allgene_assogo)
   
+  d2g<-lapply(d2g, intersect, allgene_assogo)
   g2go<-x2y_conv2_y2x(go2g)
   
   d2go<-lapply(d2g,FindOneDiseaseAssoGOterms,
@@ -120,7 +126,7 @@ MultipleTesting<-function(dpvalue,method="BH",cutoff=0.05){
 #' @param data a numeric/integer vector or matrix
 #' @return normalized vector or matrix
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 
 #' disease similarity by integrating semantic and gene functional association[J]. 
 #' PloS one, 2014, 9(6): e99415.

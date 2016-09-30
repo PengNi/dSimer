@@ -7,7 +7,7 @@
 #' @param ycol col of y in x2ydf
 #' @return a list of x-y associations
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @examples
 #' options(stringsAsFactors = FALSE)
 #' 
@@ -42,10 +42,11 @@ x2y_df2list<-function(x2ydf,xcol=1,ycol=2){
 #' convert x2ylist to y2xlist
 #' 
 #' convert list of x-y associations to list of y-x associations
-#' @param x2ylist a list which the names are xs and the elements are ys of each x
+#' @param x2ylist a list which the names are xs and the elements are ys 
+#' of each x
 #' @return a list of y2x
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @examples
 #' data(go2g_sample)
 #' g2go_sample<-x2y_conv2_y2x(go2g_sample[1:100])
@@ -69,9 +70,13 @@ x2y_conv2_y2x<-function(x2ylist){
 #' 
 #' get GO-gene associations from GO.db and org.Hs.eg.db
 #' @param GOONTOLOGY "BP" or "MF" or "CC
-#' @param rm.IEAs logical value, remove GO terms with evidence "IEA" or not
-#' @param rm.termlessthan3genes logical value, remove terms whose number of annotated genes are less than 3 or not
-#' @return a list which names are GO term IDs and elements are gene symbols annotated with GO terms
+#' @param geneid gene id type, "ENTREZID" or "SYMBOL"
+#' @param rm.IEAs logical value, remove GO terms with evidence "IEA" or 
+#' not
+#' @param rm.termlessthan3genes logical value, remove terms whose number 
+#' of annotated genes are less than 3 or not
+#' @return a list which names are GO term IDs and elements are gene ids 
+#' or symbols annotated with GO terms
 #' @importMethodsFrom AnnotationDbi as.list
 #' @importFrom GO.db GOBPOFFSPRING
 #' @importFrom GO.db GOMFOFFSPRING
@@ -80,19 +85,22 @@ x2y_conv2_y2x<-function(x2ylist){
 #' @importMethodsFrom AnnotationDbi select
 #' @import org.Hs.eg.db
 #' @export
-#' @author Peng Ni
-#' @references Mathur S, Dinakarpandian D. Finding disease similarity based on implicit semantic similarity[J]. 
-#' Journal of biomedical informatics, 2012, 45(2): 363-371.
+#' @author Peng Ni, Min Li
+#' @references Mathur S, Dinakarpandian D. Finding disease similarity based 
+#' on implicit semantic similarity[J]. Journal of biomedical informatics, 
+#' 2012, 45(2): 363-371.
 #' @seealso \code{\link{PSB}}, \code{\link{Sun_function}}
 #' @examples
-#' go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP")
+#' go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP", geneid="SYMBOL")
 #' go2g
-get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
-                               rm.IEAs=TRUE,
+get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"), 
+                               geneid=c("ENTREZID", "SYMBOL"), 
+                               rm.IEAs=TRUE, 
                                rm.termlessthan3genes=TRUE){
   entKeys <- keys(org.Hs.eg.db, keytype="ENTREZID")
   cols<-c("SYMBOL","ONTOLOGY","GO","EVIDENCE")
-  asso<-select(org.Hs.eg.db, keys=entKeys, columns=cols, keytype="ENTREZID")
+  asso<-select(org.Hs.eg.db, keys=entKeys, columns=cols, 
+               keytype="ENTREZID")
   
   GOONTOLOGY<-match.arg(GOONTOLOGY)
   asso<-asso[which(asso$ONTOLOGY==GOONTOLOGY),]
@@ -111,7 +119,8 @@ get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
   
   go_offsp<-go_offsp[which(names(go_offsp) %in% bpnames)]
   go_offsp<-go_offsp[!(is.na(go_offsp))]
-  go2g<-x2y_df2list(asso[,c(4,2)])
+  geneid<-match.arg(geneid)
+  go2g<-x2y_df2list(asso[,c("GO", geneid)])
   
   go2gfull<-go2g_full(go2g,go_offsp)
   
@@ -142,11 +151,12 @@ filterGO2Glists<-function(go2g){
 #' 
 #' convert HumanNet normalized log-likelihood score from data.frame to list,
 #'  which will be used in FunSim method
-#' @param LLSn data.frame of gene-gene normalized log-likelihood score in HumanNet
+#' @param LLSn data.frame of gene-gene normalized log-likelihood score in 
+#' HumanNet
 #' @return  a list of normalized log-likelihood score
 ##' @importFrom stats setNames
 #' @export
-#' @author Peng Ni
+#' @author Peng Ni, Min Li
 #' @references Cheng L, Li J, Ju P, et al. SemFunSim: a new method for measuring 
 #' disease similarity by integrating semantic and gene functional association[J]. 
 #' PloS one, 2014, 9(6): e99415.
@@ -169,7 +179,9 @@ LLSn2List<-function(LLSn){
     LLSnSMat[[i]]<-vector("numeric")
   }
   for(n in names){
-    subsetLLSn<-rbind(LLSn[LLSn[,1]==n,],setNames(LLSn[LLSn[,2]==n,][,c(2,1,3)],names(LLSn)))
+    subsetLLSn<-rbind(LLSn[LLSn[,1]==n,],
+                      setNames(LLSn[LLSn[,2]==n,][,c(2,1,3)],
+                               names(LLSn)))
     LLSnSMat[[n]]<-subsetLLSn[,3]
     names(LLSnSMat[[n]])<-subsetLLSn[,2]
   }
