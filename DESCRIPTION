@@ -1,7 +1,7 @@
 Package: dSimer
 Type: Package
-Title: Integration of disease similarity methods and disease network visualization
-Version: 0.99.5
+Title: Integration of Disease Similarity Methods
+Version: 0.99.6
 Date: 2015-12-10
 Authors@R: c(person(given = "Min", family = "Li", email = 
         "limin@mail.csu.edu.cn", role ="aut"), 
@@ -22,7 +22,7 @@ Description: dSimer is an R package which provides computation of nine
         provided by dSimer.
 Depends: R (>= 3.3.0), igraph (>= 1.0.1)
 Imports: stats, Rcpp (>= 0.11.3), ggplot2, reshape2, GO.db,
-        org.Hs.eg.db, AnnotationDbi
+        org.Hs.eg.db, AnnotationDbi, graphics
 Suggests: knitr, rmarkdown, BiocStyle
 LinkingTo: Rcpp
 License: GPL (>= 2)

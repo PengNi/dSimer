@@ -1,5 +1,5 @@
 ---
-title: "Integration of disease similarity methods and disease network visualization"
+title: "Integration of Disease Similarity Methods"
 author: "\\
 
   Min Li (<limin@mail.csu.edu.cn>)\\
@@ -31,7 +31,7 @@ library(dSimer)
 ```
 
 # Abstract
-Discovering disease-disease simialrties can be useful for us to inferring the mechanisms of complex diseases. And disease similarity has become the important basis in disease-related molecular function research. There have been a number of methods proposed for measuring disease similarity in recent years. But there are lacks of tools or web servers for the computation of these methods.
+Discovering disease-disease simialrties can be useful for us to inferring the mechanisms of complex diseases. Disease similarity has become the important basis in disease-related molecular function research. There have been a number of methods proposed for measuring disease similarity in recent years. But there are lacks of tools or web servers for the computation of these methods.
 We present an R package dSimer which provides computation of nine methods for measuring disease-disease similarity, including a standard cosine similarity measure and eight function-based methods. The disease similarity matrix obtained from these nine methods can be visualized through heatmap and network. Biological data widely used in disease-disease associations study are also provided by dSimer.
 
 # Introduction
@@ -214,6 +214,19 @@ Here's an example:
 data(d2g_fundo_symbol)
 d2g_sample<-d2g_fundo_symbol[1:10]
 plot_bipartite(d2g_sample)
+```
+
+For two specific diseases, we implemented function __*plot_topo*__ to visualize the topological relationship of the two diseases' gene sets in gene network. The following is an example:
+
+```{r}
+data("PPI_HPRD")
+g<-graph.data.frame(PPI_HPRD,directed = FALSE) #get an igraph graph
+
+data(d2g_fundo_symbol)
+a<-d2g_fundo_symbol[["DOID:8242"]] # get gene set a
+b<-d2g_fundo_symbol[["DOID:4914"]] # get gene set b
+
+plot_topo(a,b,g)
 ```
 
 ## Visualization of disease similarity network

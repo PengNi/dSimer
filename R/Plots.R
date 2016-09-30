@@ -61,13 +61,13 @@ plot_heatmap<-function(simmat,xlab="", ylab="",
 #' @param simmat a symmetric similarity matrix
 #' @param cutoff a cutoff value, only disease pairs have similarity scores 
 #' no less than cutoff will be visualized in the network
-#' @param vertex.label.font font size
-#' @param vertex.label.dist font dist
-#' @param vertex.label.color font text color
-#' @param vertex.label.cex cex of vertex label
+#' @param vertex.label.font label text font
+#' @param vertex.label.dist label text dist
+#' @param vertex.label.color label text color
+#' @param vertex.label.cex label text cex
 #' @param vertex.shape vertex shape
 #' @param vertex.color vertex color
-#' @param vertexsizefold a fold of vertex size
+#' @param vertex.size vertex size
 #' @param edge.color edge color
 #' @param layout layout
 #' @return an igraph plot object
@@ -99,14 +99,13 @@ plot_net<-function(simmat,
                    cutoff=1,
                    vertex.label.font=2,
                    vertex.label.dist=0.5,
-                   vertex.label.color='black',
+                   vertex.label.color="black",
                    vertex.label.cex=0.8,
                    vertex.shape="circle",
-                   vertexsizefold=5,
                    vertex.color="paleturquoise",
+                   vertex.size=20,
                    edge.color="red",
                    layout=layout.fruchterman.reingold){
-
   
   simmat<-as.matrix(simmat)
   simmat<-simmat[order(row.names(simmat)),order(colnames(simmat)),drop=FALSE]
@@ -133,7 +132,6 @@ plot_net<-function(simmat,
   g<-induced.subgraph(g,names(dgee[dgee>0]))
   
   plot.igraph(g,
-              vertex.size=vertexsizefold*degree(g),
               vertex.label=V(g)$name,
               vertex.label.font=vertex.label.font,
               vertex.label.dist=vertex.label.dist,
@@ -141,6 +139,7 @@ plot_net<-function(simmat,
               vertex.label.cex=vertex.label.cex,
               vertex.shape=vertex.shape,
               vertex.color=vertex.color,
+              vertex.size=vertex.size,
               edge.color=edge.color,
               layout=layout)
 }
@@ -207,21 +206,100 @@ theme_dose <- function(font.size=14) {
     )
 }
 
+#' plot topological relationship of two gene sets
+#' 
+#' plot topological relationship of two gene sets (which are associated 
+#' with two diseases respectively).
+#' @param geneset1 a character vector contains gene ids
+#' @param geneset2 another character vector contains gene ids
+#' @param graph an igraph graph object which represents a gene network
+#' @param vertexcolor a character vector contains 3 colors for vertexs
+#' @param vertex.shape vertex shape
+#' @param vertex.size vertex size
+#' @param vertex.label.font label text font
+#' @param vertex.label.dist label text dist
+#' @param vertex.label.color label text color
+#' @param vertex.label.cex label text cex
+#' @param edge.color edge color
+#' @param layout layout
+#' @return an igraph plot object
+#' @importFrom igraph V
+#' @importFrom igraph "V<-"
+#' @importFrom igraph induced.subgraph
+#' @importFrom igraph plot.igraph
+#' @importFrom igraph layout.auto
+#' @importFrom graphics legend
+#' @export
+#' @author Peng Ni, Min Li
+#' @examples
+#' data("PPI_HPRD")
+#' g<-graph.data.frame(PPI_HPRD,directed = FALSE) #get an igraph graph 
+#' 
+#' data(d2g_fundo_symbol)
+#' a<-d2g_fundo_symbol[["DOID:8242"]] # get gene set a
+#' b<-d2g_fundo_symbol[["DOID:4914"]] # get gene set b
+#' 
+#' plot_topo(a,b,g)
+plot_topo<-function(geneset1, geneset2, graph,
+                    vertexcolor=c("tomato","orange","lightsteelblue"), 
+                    vertex.shape="circle",
+                    vertex.size=14,
+                    vertex.label.font=1,
+                    vertex.label.dist=0,
+                    vertex.label.color='black',
+                    vertex.label.cex=0.5,
+                    edge.color="black",
+                    layout=layout.auto){
+  geneset1<-intersect(geneset1, V(graph)$name)
+  geneset2<-intersect(geneset2, V(graph)$name)
+  stopifnot(length(geneset1)>0 & length(geneset2)>0)
+  
+  g<-induced.subgraph(graph,union(geneset1, geneset2))
+  shareg<-intersect(geneset1, geneset2)
+  diffg1<-setdiff(geneset1, geneset2)
+  diffg2<-setdiff(geneset2, geneset1)
+  gname<-c(shareg, diffg1, diffg2)
+  V(g)[gname]$type<-c(rep(1, length(shareg)), 
+                      rep(2, length(diffg1)), 
+                      rep(3, length(diffg2)))
+  vertex.color<-vertexcolor[V(g)$type]
+  plot.igraph(g, 
+              vertex.color=vertex.color, 
+              vertex.shape=vertex.shape, 
+              vertex.size=vertex.size, 
+              vertex.label.font=vertex.label.font, 
+              vertex.label.dist=vertex.label.dist, 
+              vertex.label.color=vertex.label.color, 
+              vertex.label.cex=vertex.label.cex, 
+              edge.color=edge.color, 
+              layout=layout, 
+              vertex.shape=vertex.shape,
+              layout=layout)
+  legend(x=-1.1, y=-1.0, 
+         legend = c("shared genes","geneset 1", "geneset2"), 
+         pch = 21, pt.bg=vertexcolor, pt.cex=2, cex=.8,bty="n", ncol=3)
+}
+
 #' plot disease-gene (or GO term etc.) associations as a bipartite graph
 #' 
 #' plot a bipartite graph which visualizes associations between diseases and genes 
 #' (or GO terms etc.)
 #' @param xylist a named list object which names are diseases and each element of the
 #' list is a gene set with respect to each disease.
-#' @param vertex.color1 vertex color
-#' @param vertex.color2 another vertex color
-#' @param vertex.label.font font size
-#' @param vertex.label.dist font dist
-#' @param vertex.label.color font text color
-#' @param vertex.label.cex cex of vertex label
+#' @param vertex.size vertex size
+#' @param vertex.shape1 shape for one kind of vertex
+#' @param vertex.shape2 shape for another kind of vertex
+#' @param vertex.color1 color for one kind of vertex
+#' @param vertex.color2 color for another kind of vertex
+#' @param vertex.label.font label text font
+#' @param vertex.label.dist label text dist
+#' @param vertex.label.color label text color
+#' @param vertex.label.cex label text cex
 #' @param edge.color edge color
 #' @param layout layout
 #' @return an igraph plot object
+#' @importFrom igraph V
+#' @importFrom igraph "V<-"
 #' @importFrom igraph plot.igraph
 #' @importFrom igraph layout.kamada.kawai
 #' @importFrom igraph graph_from_incidence_matrix
@@ -232,6 +310,9 @@ theme_dose <- function(font.size=14) {
 #' d2g_sample<-sample(d2g_fundo_symbol, 3)
 #' plot_bipartite(d2g_sample)
 plot_bipartite<-function(xylist,
+                         vertex.size=12,
+                         vertex.shape1="circle",
+                         vertex.shape2="square",
                          vertex.color1="darkseagreen", 
                          vertex.color2="turquoise1", 
                          vertex.label.font=2,
@@ -254,7 +335,7 @@ plot_bipartite<-function(xylist,
     }
   }
   g<-graph_from_incidence_matrix(mat, weighted=TRUE)
-  vertex_shape<-c("circle", "square")[1+(V(g)$type==FALSE)]
+  vertex_shape<-c(vertex.shape1, vertex.shape2)[1+(V(g)$type==FALSE)]
   vertex_color<-c(vertex.color1, vertex.color2)[1+(V(g)$type==FALSE)]
   plot.igraph(g, 
               vertex.label.font=vertex.label.font, 
@@ -265,5 +346,5 @@ plot_bipartite<-function(xylist,
               layout=layout, 
               vertex.shape=vertex_shape, 
               vertex.color=vertex_color, 
-              vertex.size=12)
+              vertex.size=vertex.size)
 }

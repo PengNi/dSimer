@@ -4,7 +4,8 @@
 \alias{plot_bipartite}
 \title{plot disease-gene (or GO term etc.) associations as a bipartite graph}
 \usage{
-plot_bipartite(xylist, vertex.color1 = "darkseagreen",
+plot_bipartite(xylist, vertex.size = 12, vertex.shape1 = "circle",
+  vertex.shape2 = "square", vertex.color1 = "darkseagreen",
   vertex.color2 = "turquoise1", vertex.label.font = 2,
   vertex.label.dist = 0, vertex.label.color = "black",
   vertex.label.cex = 0.8, edge.color = "black",
@@ -14,17 +15,23 @@ plot_bipartite(xylist, vertex.color1 = "darkseagreen",
 \item{xylist}{a named list object which names are diseases and each element of the
 list is a gene set with respect to each disease.}
 
-\item{vertex.color1}{vertex color}
+\item{vertex.size}{vertex size}
 
-\item{vertex.color2}{another vertex color}
+\item{vertex.shape1}{shape for one kind of vertex}
 
-\item{vertex.label.font}{font size}
+\item{vertex.shape2}{shape for another kind of vertex}
 
-\item{vertex.label.dist}{font dist}
+\item{vertex.color1}{color for one kind of vertex}
 
-\item{vertex.label.color}{font text color}
+\item{vertex.color2}{color for another kind of vertex}
 
-\item{vertex.label.cex}{cex of vertex label}
+\item{vertex.label.font}{label text font}
+
+\item{vertex.label.dist}{label text dist}
+
+\item{vertex.label.color}{label text color}
+
+\item{vertex.label.cex}{label text cex}
 
 \item{edge.color}{edge color}
 

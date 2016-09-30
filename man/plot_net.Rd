@@ -6,8 +6,8 @@
 \usage{
 plot_net(simmat, cutoff = 1, vertex.label.font = 2,
   vertex.label.dist = 0.5, vertex.label.color = "black",
-  vertex.label.cex = 0.8, vertex.shape = "circle", vertexsizefold = 5,
-  vertex.color = "paleturquoise", edge.color = "red",
+  vertex.label.cex = 0.8, vertex.shape = "circle",
+  vertex.color = "paleturquoise", vertex.size = 20, edge.color = "red",
   layout = layout.fruchterman.reingold)
 }
 \arguments{
@@ -16,19 +16,19 @@ plot_net(simmat, cutoff = 1, vertex.label.font = 2,
 \item{cutoff}{a cutoff value, only disease pairs have similarity scores 
 no less than cutoff will be visualized in the network}
 
-\item{vertex.label.font}{font size}
+\item{vertex.label.font}{label text font}
 
-\item{vertex.label.dist}{font dist}
+\item{vertex.label.dist}{label text dist}
 
-\item{vertex.label.color}{font text color}
+\item{vertex.label.color}{label text color}
 
-\item{vertex.label.cex}{cex of vertex label}
+\item{vertex.label.cex}{label text cex}
 
 \item{vertex.shape}{vertex shape}
 
-\item{vertexsizefold}{a fold of vertex size}
-
 \item{vertex.color}{vertex color}
+
+\item{vertex.size}{vertex size}
 
 \item{edge.color}{edge color}
 
