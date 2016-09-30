@@ -3,10 +3,11 @@ Type: Package
 Title: Integration of disease similarity methods and disease network visualization
 Version: 0.99.5
 Date: 2015-12-10
-Authors@R: c(person(given = "Peng", family = "Ni", email =
-        "nipeng@csu.edu.cn", role = c("aut", "cre")), person(given =
-        "Min", family = "Li", email = "limin@mail.csu.edu.cn", role =
-        "aut"), person(given = "Zhihui", family = "Fei", email = 
+Authors@R: c(person(given = "Min", family = "Li", email = 
+        "limin@mail.csu.edu.cn", role ="aut"), 
+        person(given = "Peng", family = "Ni", email = 
+        "nipeng@csu.edu.cn", role = c("aut", "cre")), 
+        person(given = "Zhihui", family = "Fei", email = 
         "379666774@qq.com", role  = "ctb"), person(given = "Ping", 
         family = "Huang", email = "1615809243@qq.com", role  = "ctb"))
 Author: Min Li <limin@mail.csu.edu.cn>, Peng Ni <nipeng@csu.edu.cn>  
