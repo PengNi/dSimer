@@ -14,7 +14,7 @@ output:
     toc: yes
 csl: nature.csl
 vignette: >
-  %\VignetteIndexEntry{Integration of disease similarity methods and disease network visualization} 
+  %\VignetteIndexEntry{Integration of Disease Similarity Methods} 
   %\VignettePackage{dSimer}
   %\VignetteEngine{knitr::rmarkdown} 
   %\VignetteEncoding{UTF-8}
