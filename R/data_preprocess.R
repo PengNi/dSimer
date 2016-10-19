@@ -70,7 +70,7 @@ x2y_conv2_y2x<-function(x2ylist){
 #' 
 #' get GO-gene associations from GO.db and org.Hs.eg.db
 #' @param GOONTOLOGY "BP" or "MF" or "CC
-#' @param geneid gene id type, "ENTREZID" or "SYMBOL"
+#' @param geneid gene id type, "ENTREZID" or "SYMBOL" or"OMIM"
 #' @param rm.IEAs logical value, remove GO terms with evidence "IEA" or 
 #' not
 #' @param rm.termlessthan3genes logical value, remove terms whose number 
@@ -94,11 +94,12 @@ x2y_conv2_y2x<-function(x2ylist){
 #' go2g<-get_GOterm2GeneAssos(GOONTOLOGY="BP", geneid="SYMBOL")
 #' go2g
 get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"), 
-                               geneid=c("ENTREZID", "SYMBOL"), 
+                               geneid=c("ENTREZID", "SYMBOL", "OMIM"), 
                                rm.IEAs=TRUE, 
                                rm.termlessthan3genes=TRUE){
   entKeys <- keys(org.Hs.eg.db, keytype="ENTREZID")
-  cols<-c("SYMBOL","ONTOLOGY","GO","EVIDENCE")
+  geneid<-match.arg(geneid)
+  cols<-c(geneid,"ONTOLOGY","GO","EVIDENCE")
   asso<-select(org.Hs.eg.db, keys=entKeys, columns=cols, 
                keytype="ENTREZID")
   
@@ -119,7 +120,6 @@ get_GOterm2GeneAssos<-function(GOONTOLOGY=c("BP","MF","CC"),
   
   go_offsp<-go_offsp[which(names(go_offsp) %in% bpnames)]
   go_offsp<-go_offsp[!(is.na(go_offsp))]
-  geneid<-match.arg(geneid)
   go2g<-x2y_df2list(asso[,c("GO", geneid)])
   
   go2gfull<-go2g_full(go2g,go_offsp)

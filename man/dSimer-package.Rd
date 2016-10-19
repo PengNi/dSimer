@@ -16,7 +16,7 @@ provided by dSimer.
 }
 \details{
 \tabular{ll}{ Package: \tab dSimer\cr Type: \tab Package\cr Version: \tab
-0.99.6\cr Date: \tab 12-10-2015\cr biocViews:\tab Software, Visualization, 
+1.1.0\cr Date: \tab 12-10-2015\cr biocViews:\tab Software, Visualization, 
 Network\cr Depends: \tab R (>= 3.3.0), igraph (>= 1.0.1)\cr Imports: \tab 
 stats, Rcpp (>= 0.11.3), ggplot2, reshape2, GO.db, AnnotationDbi, org.Hs.eg.db, 
 graphics\cr Suggests: \tab knitr, rmarkdown, BiocStyle\cr LinkingTo: \tab 

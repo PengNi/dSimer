@@ -5,7 +5,7 @@
 \title{get GO-gene associations}
 \usage{
 get_GOterm2GeneAssos(GOONTOLOGY = c("BP", "MF", "CC"),
-  geneid = c("ENTREZID", "SYMBOL"), rm.IEAs = TRUE,
+  geneid = c("ENTREZID", "SYMBOL", "OMIM"), rm.IEAs = TRUE,
   rm.termlessthan3genes = TRUE)
 }
 \arguments{
