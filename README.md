@@ -1,3 +1,2 @@
-dSimer is an R package which provides eight function-based methods for disease similarity calculation. These eight methods take advantage of diverse biological data which calculate disease similarity from different perspectives. The disease similarity matrix obtained from these eight methods can also be visualized by dSimer.
-
-If you are interested in this package, use ?dSimer for help.
+dSimer is an R package which provides computation of nine methods for measuring disease-disease similarity, including a standard cosine similarity measure and eight function-based methods. The disease similarity matrix obtained from these nine methods can be visualized through heatmap and network. Biological data widely used in disease-disease associations study are also provided by dSimer.
+If you are interested in this package, install it from R and bioconductor and use ?dSimer for help.
