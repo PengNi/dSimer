@@ -24,6 +24,7 @@
 #' 
 #' d2g_fundo_list<-x2y_df2list(d2g_fundo_sample)
 x2y_df2list<-function(x2ydf,xcol=1,ycol=2){
+  colnames(x2ydf) <- as.character(c(1:ncol(x2ydf)))
   colnames(x2ydf)[c(xcol,ycol)]<-c('V1','V2')
   
   x2ydf[,xcol]<-as.character(x2ydf[,xcol])
